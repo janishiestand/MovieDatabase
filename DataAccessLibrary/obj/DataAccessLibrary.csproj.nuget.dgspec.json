@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj": {}
+    "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj": {}
   },
   "projects": {
-    "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj": {
+    "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj",
+        "projectUniqueName": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj",
         "projectName": "DataAccessLibrary",
-        "projectPath": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj",
+        "projectPath": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj",
         "packagesPath": "/Users/janishiestand/.nuget/packages/",
-        "outputPath": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/",
+        "outputPath": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/janishiestand/.nuget/NuGet/NuGet.Config"
