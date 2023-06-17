@@ -33,22 +33,22 @@ namespace DataAccessLibrary.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("birthday")
+                    b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("Movieid")
+                        .HasColumnType("int");
 
                     b.HasKey("ActorId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex("Movieid");
 
                     b.ToTable("Actor");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Movie", b =>
                 {
-                    b.Property<int>("MovieId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -68,7 +68,7 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("MovieId");
+                    b.HasKey("id");
 
                     b.ToTable("Movie");
                 });
@@ -77,7 +77,7 @@ namespace DataAccessLibrary.Migrations
                 {
                     b.HasOne("DataAccessLibrary.Models.Movie", null)
                         .WithMany("Actors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("Movieid");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Movie", b =>

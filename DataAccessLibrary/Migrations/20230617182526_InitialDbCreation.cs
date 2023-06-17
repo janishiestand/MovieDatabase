@@ -19,7 +19,7 @@ namespace DataAccessLibrary.Migrations
                 name: "Movie",
                 columns: table => new
                 {
-                    MovieId = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MovieName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -31,7 +31,7 @@ namespace DataAccessLibrary.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movie", x => x.MovieId);
+                    table.PrimaryKey("PK_Movie", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -45,24 +45,24 @@ namespace DataAccessLibrary.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ActorLastName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    birthday = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: true)
+                    Birthday = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Movieid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Actor", x => x.ActorId);
                     table.ForeignKey(
-                        name: "FK_Actor_Movie_MovieId",
-                        column: x => x.MovieId,
+                        name: "FK_Actor_Movie_Movieid",
+                        column: x => x.Movieid,
                         principalTable: "Movie",
-                        principalColumn: "MovieId");
+                        principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Actor_MovieId",
+                name: "IX_Actor_Movieid",
                 table: "Actor",
-                column: "MovieId");
+                column: "Movieid");
         }
 
         /// <inheritdoc />
