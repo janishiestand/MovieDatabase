@@ -15,7 +15,7 @@ namespace DataAccessLibrary.Repositories
             _context = context;
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll(CancellationToken cancellationToken)
         {
             return _context.Set<T>().AsNoTracking();
         }

@@ -1,11 +1,79 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Movie Database";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
+<form asp-page="Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="input-group">
+        <div class="form-group mb-2">
+            <input class="form-control" asp-for="MovieName" placeholder="First Name">
+            <span asp-validation-for="MovieName" class="invalid-feedback"></span>
+            <label></label>
+            <input class="form-control" asp-for="Duration" placeholder="Last Name">
+            <span asp-validation-for="Duration" class="invalid-feedback"></span>
+            <label></label>
+            <input class="form-control" asp-for="ReleaseDate" placeholder="Phone Number">
+            <span asp-validation-for="ReleaseDate" class="invalid-feedback"></span>
+            <label></label>
+            <input class="form-control" asp-for="Rating" placeholder="Date of Birth">
+            <span asp-validation-for="Rating" class="invalid-feedback"></span>
+            <label></label>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Save Movie</button>
+</form>
+<label></label>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    <form asp-page="Update" asp-page-handler="update" asp-route-id="@item.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            Update
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-page="Index" asp-page-handler="delete" asp-route-id="@item.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -15,9 +15,9 @@ namespace DataAccessLibrary.Repositories
 			_context = context;
 		}
 
-		public async Task<Movie> GetAllMovies()
+		public async Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken)
 		{
-			return await GetAll().OrderByDescending(x => x.MovieName).FirstOrDefaultAsync();
+			return await _context.Movie.Include(e => e.Actors).ToListAsync();
 		}
 	}
 }

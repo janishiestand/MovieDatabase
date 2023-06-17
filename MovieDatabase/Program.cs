@@ -1,6 +1,8 @@
 ﻿using MySqlConnector;
 using Pomelo.EntityFrameworkCore;
 using DataAccessLibrary.DataAccess;
+using DataAccessLibrary.Interfaces;
+using DataAccessLibrary.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace MovieDatabase;
@@ -16,7 +18,8 @@ public class Program
         builder.Services.AddDbContext<MovieContext>(x =>
         x.UseMySql(connectionString, sqlVersion));
 
-        
+        builder.Services.AddTransient<IMovieRepository, MovieRepository>();
+
         // Add services to the container.
         builder.Services.AddRazorPages();
 
