@@ -5,10 +5,10 @@ namespace DataAccessLibrary.Interfaces
 	{
 		IQueryable<T> GetAll(CancellationToken cancellationToken);
 		Task<T> GetById(int id);
-		Task Add(T obj);
+		Task AddAsync(T obj, CancellationToken cancellationToken);
 		Task Update(T obj);
         Task Delete(T obj);
-        Task Save();
+        Task SaveChangesAsync(CancellationToken cancellationToken);
 	}
 }
 

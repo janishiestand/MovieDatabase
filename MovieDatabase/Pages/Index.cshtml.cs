@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace MovieDatabase.Pages;
 
@@ -12,7 +13,7 @@ public class IndexModel : PageModel
 {
     private readonly IMovieRepository _db;
 
-    public IList<Movie> Movie { get; set; } = new List<Movie>();
+    public IList<Movie> Movies { get; set; } = new List<Movie>();
 
     [BindProperty, Required]
     public string MovieName { get; set; }
@@ -34,7 +35,38 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
-        var Movies = _db.GetAllMoviesAsync(cancellationToken);
+        try
+        {
+            if (await _db.CountAsync(cancellationToken) == 0)
+            {
+                string file = System.IO.File.ReadAllText("sampledata.json");
+                Movies = JsonSerializer.Deserialize<List<Movie>>(file);
+                await _db.AddRangeAsync(Movies, cancellationToken);
+                await _db.SaveChangesAsync(cancellationToken);
+            }
+            Movies = await _db.GetAllMoviesAsync(cancellationToken);
+        } catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            RedirectToPage("/");
+        } 
+    }
+
+    public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
+    {
+        if (ModelState.IsValid)
+        {
+            Movie movie = new(
+                MovieName: MovieName,
+                Duration = Duration,
+                ReleaseDate = ReleaseDate,
+                Rating = Rating
+                );
+            await _db.AddAsync(movie, cancellationToken);
+            await _db.SaveChangesAsync(cancellationToken);
+            return RedirectToPage();
+        }
+        return Page();
     }
 }
 

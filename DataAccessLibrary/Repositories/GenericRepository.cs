@@ -23,7 +23,6 @@ namespace DataAccessLibrary.Repositories
         public async Task Delete(T obj)
         {
             _context.Set<T>().Remove(obj);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<T> GetById(int id)
@@ -31,21 +30,19 @@ namespace DataAccessLibrary.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task Add(T obj)
+        public async Task AddAsync(T obj, CancellationToken cancellationToken)
         {
             await _context.Set<T>().AddAsync(obj);
-            await _context.SaveChangesAsync();
         }
 
-        public async Task Save()
+        public async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task Update(T obj)
         {
             _context.Set<T>().Update(obj);
-            await _context.SaveChangesAsync();
         }
     }
 }

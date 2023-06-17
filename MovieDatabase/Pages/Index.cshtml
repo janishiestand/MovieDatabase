@@ -8,16 +8,16 @@
     <div asp-validation-summary="All"></div>
     <div class="input-group">
         <div class="form-group mb-2">
-            <input class="form-control" asp-for="MovieName" placeholder="First Name">
+            <input class="form-control" asp-for="MovieName" placeholder="Movie Name">
             <span asp-validation-for="MovieName" class="invalid-feedback"></span>
             <label></label>
-            <input class="form-control" asp-for="Duration" placeholder="Last Name">
+            <input class="form-control" asp-for="Duration" placeholder="Duration">
             <span asp-validation-for="Duration" class="invalid-feedback"></span>
             <label></label>
-            <input class="form-control" asp-for="ReleaseDate" placeholder="Phone Number">
+            <input class="form-control" asp-for="ReleaseDate" placeholder="Release Date">
             <span asp-validation-for="ReleaseDate" class="invalid-feedback"></span>
             <label></label>
-            <input class="form-control" asp-for="Rating" placeholder="Date of Birth">
+            <input class="form-control" asp-for="Rating" placeholder="Rating 0-10">
             <span asp-validation-for="Rating" class="invalid-feedback"></span>
             <label></label>
         </div>
@@ -44,7 +44,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Movie)
+        @foreach (var item in Model.Movies)
         {
             <tr>
                 <td>
@@ -60,14 +60,14 @@
                     @Html.DisplayFor(modelItem => item.Rating)
                 </td>
                 <td>
-                    <form asp-page="Update" asp-page-handler="update" asp-route-id="@item.Id" method="post">
+                    <form asp-page="Update" asp-page-handler="update" asp-route-id="@item.id" method="post">
                         <button type="submit" class="btn btn-sm btn-primary">
                             Update
                         </button>
                     </form>
                 </td>
                 <td>
-                    <form asp-page="Index" asp-page-handler="delete" asp-route-id="@item.Id" method="post">
+                    <form asp-page="Index" asp-page-handler="delete" asp-route-id="@item.id" method="post">
                         <button type="submit" class="btn btn-sm btn-danger">
                             Delete
                         </button>

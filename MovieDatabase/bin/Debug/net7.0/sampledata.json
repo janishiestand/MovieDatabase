@@ -1,0 +1,48 @@
+[
+  {
+	"MovieName": "Star Wars",
+ 	"Duration": 90,
+	"ReleaseDate": "12.12.2019",
+	"Rating": 9
+    "Actors": [
+      {
+        "ActorFirstName": "Mark",
+        "ActorLastName": "Hamill",
+        "Birthday": "25.09.1951"
+      },
+      {
+        "ActorFirstName": "Harrison",
+        "ActorLastName": "Ford",
+        "Birthday": "13.07.1942"
+      },
+      {
+        "ActorFirstName": "Carrie",
+        "ActorLastName": "Fisher",
+        "Birthday": "27.12.2016"
+      }
+    ]
+  },
+  {
+	"MovieName": "Avatar: The Way of Water",
+ 	"Duration": 210,
+	"ReleaseDate": "14.12.2022",
+	"Rating": 10
+    "Actors": [
+      {
+        "ActorFirstName": "Sam",
+        "ActorLastName": "Worthington",
+        "Birthday": "02.08.1976"
+      },
+      {
+        "ActorFirstName": "Zoe",
+        "ActorLastName": "Saldana",
+        "Birthday": "19.06.1978"
+      },
+      {
+        "ActorFirstName": "Sigourney",
+        "ActorLastName": "Weaver",
+        "Birthday": "08.10.1949"
+      }
+    ]
+  }
+]

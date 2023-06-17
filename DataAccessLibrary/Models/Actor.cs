@@ -6,7 +6,7 @@ namespace DataAccessLibrary.Models
 		public int ActorId { get; set; }
 		public String ActorFirstName { get; set; }
 		public String ActorLastName { get; set; }
-		public DateTime birthday { get; set; }
+		public DateTime Birthday { get; set; }
 
 	}
 }
