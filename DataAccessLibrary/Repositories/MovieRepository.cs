@@ -14,7 +14,6 @@ namespace DataAccessLibrary.Repositories
 		{
 			_context = context;
 		}
-		string s = "test";
 
 		public async Task<Movie> GetAllMovies()
 		{
