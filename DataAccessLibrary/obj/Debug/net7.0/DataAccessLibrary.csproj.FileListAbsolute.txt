@@ -1,0 +1,28 @@
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.deps.json
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.pdb
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.csproj.AssemblyReference.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.AssemblyInfoInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.AssemblyInfo.cs
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.csproj.CoreCompileInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/refint/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.pdb
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/ref/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.runtimeconfig.json
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.genruntimeconfig.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.deps.json
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.runtimeconfig.json
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/bin/Debug/net7.0/DataAccessLibrary.pdb
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.csproj.AssemblyReference.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.AssemblyInfoInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.AssemblyInfo.cs
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.csproj.CoreCompileInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/refint/DataAccessLibrary.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.pdb
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/DataAccessLibrary.genruntimeconfig.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/DataAccessLibrary/obj/Debug/net7.0/ref/DataAccessLibrary.dll
