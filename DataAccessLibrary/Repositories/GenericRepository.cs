@@ -15,19 +15,9 @@ namespace DataAccessLibrary.Repositories
             _context = context;
         }
 
-        public IQueryable<T> GetAll(CancellationToken cancellationToken)
-        {
-            return _context.Set<T>().AsNoTracking();
-        }
-
         public async Task Delete(T obj)
         {
             _context.Set<T>().Remove(obj);
-        }
-
-        public async Task<T> GetById(int id)
-        {
-            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task AddAsync(T obj, CancellationToken cancellationToken)

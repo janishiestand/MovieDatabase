@@ -44,9 +44,9 @@ public class IndexModel : PageModel
         {
             Movie movie = new(
                 MovieName: MovieName,
-                Duration = Duration,
-                ReleaseDate = ReleaseDate,
-                Rating = Rating
+                Duration: Duration,
+                ReleaseDate: ReleaseDate,
+                Rating: Rating
                 );
             await _db.AddAsync(movie, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);

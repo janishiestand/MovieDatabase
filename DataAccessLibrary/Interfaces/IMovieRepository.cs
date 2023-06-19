@@ -7,10 +7,8 @@ namespace DataAccessLibrary.Interfaces
 {
 	public interface IMovieRepository : IGenericRepository<Movie>
 	{
-		Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken);
-		Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken);
-		Task<int> CountAsync(CancellationToken cancellationToken);
-		Task<Movie?> FindAsync(int id, CancellationToken cancellationToken);
+		public Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken);
+        public Task<Movie?> FindAsync(int id, CancellationToken cancellationToken);
 	}
 }
 
