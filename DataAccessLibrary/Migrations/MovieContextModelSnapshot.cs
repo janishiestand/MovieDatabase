@@ -43,7 +43,7 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasIndex("Movieid");
 
-                    b.ToTable("Actor");
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Movie", b =>
@@ -70,7 +70,7 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Actor", b =>

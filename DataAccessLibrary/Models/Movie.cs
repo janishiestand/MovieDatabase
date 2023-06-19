@@ -5,6 +5,7 @@ namespace DataAccessLibrary.Models
 {
 	public class Movie
 	{
+		
 		public Movie(string MovieName, int Duration, DateTime ReleaseDate, int Rating)
 		{
 			this.MovieName = MovieName;
@@ -12,7 +13,8 @@ namespace DataAccessLibrary.Models
 			this.ReleaseDate = ReleaseDate;
 			this.Rating = Rating;
 		}
-			
+		
+
 		public int id { get; set; }
 
 		[Required]
@@ -24,9 +26,13 @@ namespace DataAccessLibrary.Models
         [Required]
         public DateTime ReleaseDate { get; set; }
 
-		public List<Actor> Actors { get; set; } = new List<Actor>();
+		[Required]
+        public int Rating { get; set; }
+
+        public List<Actor> Actors { get; set; } = new List<Actor>();
 		public String? Director { get; set; }
-		public int Rating { get; set; }
+
+		
 
 	}
 }

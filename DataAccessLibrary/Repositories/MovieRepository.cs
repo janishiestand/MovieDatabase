@@ -17,19 +17,24 @@ namespace DataAccessLibrary.Repositories
 
 		public async Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken)
 		{
-			return await _context.Movie.Include(e => e.Actors).ToListAsync(cancellationToken);
+			return await _context.Movies.ToListAsync(cancellationToken);
 		}
 
 		public async Task<int> CountAsync(CancellationToken cancellationToken)
 		{
-			return await _context.Movie.CountAsync(cancellationToken);
+			return await _context.Movies.CountAsync(cancellationToken);
 		}
 
 		public async Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken)
 		{
-			await _context.Movie.AddRangeAsync(movies, cancellationToken);
+			await _context.Movies.AddRangeAsync(movies, cancellationToken);
 		}
-		
+
+		public async Task<Movie?> FindAsync(int id, CancellationToken cancellationToken)
+		{
+			Movie? movie = await _context.Movies.FindAsync(id, cancellationToken);
+			return movie;
+		}
 	}
 }
 

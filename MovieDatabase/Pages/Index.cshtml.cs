@@ -34,22 +34,8 @@ public class IndexModel : PageModel
     }
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
-    {
-        try
-        {
-            if (await _db.CountAsync(cancellationToken) == 0)
-            {
-                string file = System.IO.File.ReadAllText("sampledata.json");
-                Movies = JsonSerializer.Deserialize<List<Movie>>(file);
-                await _db.AddRangeAsync(Movies, cancellationToken);
-                await _db.SaveChangesAsync(cancellationToken);
-            }
-            Movies = await _db.GetAllMoviesAsync(cancellationToken);
-        } catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            RedirectToPage("/");
-        } 
+    {   
+        Movies = await _db.GetAllMoviesAsync(cancellationToken);  
     }
 
     public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
@@ -67,6 +53,18 @@ public class IndexModel : PageModel
             return RedirectToPage();
         }
         return Page();
+    }
+
+    public async Task<IActionResult> OnPostDelete(int id, CancellationToken cancellationToken)
+    {
+        Movie? toRemove = await _db.FindAsync(id, cancellationToken);
+        if (toRemove == null)
+        {
+            return (NotFound());
+        }
+        await _db.Delete(toRemove);
+        await _db.SaveChangesAsync(cancellationToken);
+        return RedirectToAction(nameof(IndexModel));
     }
 }
 

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLibrary.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20230617182526_InitialDbCreation")]
+    [Migration("20230619172332_InitialDbCreation")]
     partial class InitialDbCreation
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasIndex("Movieid");
 
-                    b.ToTable("Actor");
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Movie", b =>
@@ -73,7 +73,7 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Models.Actor", b =>
