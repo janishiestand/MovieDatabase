@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Actors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

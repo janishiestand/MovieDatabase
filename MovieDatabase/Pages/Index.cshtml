@@ -73,6 +73,13 @@
                         </button>
                     </form>
                 </td>
+                <td>
+                    <form asp-page="Actors" asp-page-handler="actors" asp-route-id="@item.id" method="post">
+                        <button type="submit" class="btn btn-sm btn-info">
+                            Actors
+                        </button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

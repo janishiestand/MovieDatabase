@@ -34,7 +34,13 @@ public class IndexModel : PageModel
     }
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
-    {   
+    {
+        /*
+        string file = System.IO.File.ReadAllText("sampledata.json");
+        var sampleMovies = JsonSerializer.Deserialize<List<Movie>>(file);
+        await _db.AddRangeAsync(sampleMovies, cancellationToken);
+        _db.SaveChangesAsync(cancellationToken);
+        */
         Movies = await _db.GetAllMoviesAsync(cancellationToken);  
     }
 
