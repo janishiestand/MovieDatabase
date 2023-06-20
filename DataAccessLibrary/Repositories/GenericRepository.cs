@@ -9,13 +9,12 @@ namespace DataAccessLibrary.Repositories
 	{
 		private readonly MovieContext _context = null;
          
-
         public GenericRepository(MovieContext context)
         {
             _context = context;
         }
 
-        public async Task Delete(T obj)
+        public void Delete(T obj)
         {
             _context.Set<T>().Remove(obj);
         }
@@ -30,9 +29,14 @@ namespace DataAccessLibrary.Repositories
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task Update(T obj)
+        public void Update(T obj)
         {
             _context.Set<T>().Update(obj);
+        }
+
+        public async Task<T> GetById(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Set<T>().FindAsync(id);
         }
     }
 }

@@ -8,7 +8,7 @@
     <div asp-validation-summary="All"></div>
     <div class="input-group">
         <div class="form-group mb-2">
-            <input class="form-control" asp-for="MovieName" placeholder="Movie Name">
+            <input class="form-control" asp-for="MovieName" placeholder="Movie Title">
             <span asp-validation-for="MovieName" class="invalid-feedback"></span>
             <label></label>
             <input class="form-control" asp-for="Duration" placeholder="Duration">
@@ -29,16 +29,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MovieName)
+                Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duration)
+                Duration
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
+                Release Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rating)
+                Rating
             </th>
             <th></th>
         </tr>
@@ -54,7 +54,7 @@
                     @Html.DisplayFor(modelItem => item.Duration)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    @Convert.ToDateTime(item.ReleaseDate).ToString("dd/MM/yyyy")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)

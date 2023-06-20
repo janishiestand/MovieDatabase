@@ -31,6 +31,19 @@ namespace DataAccessLibrary.Repositories
 			await _context.AddRangeAsync(movies, cancellationToken);
 		}
 
+		public async Task<List<Actor>> GetActorsByMovie(Movie movie)
+		{
+			List<Actor> actors = movie.Actors.ToList();
+			return actors;
+		}
+
+		public async Task<Movie> FirtOrDefaultAsync(int id)
+		{
+			Movie m = await _context.Movies.Include(e => e.Actors).FirstOrDefaultAsync(x => x.id == id);
+			return m;
+		}
+		
+
     }
 }
 

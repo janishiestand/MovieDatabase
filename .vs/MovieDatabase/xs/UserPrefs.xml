@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{01AD16D8-9DF4-44F7-A675-F9825BA490EB}|https">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DataAccessLibrary/Models/Movie.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MovieDatabase/Pages/Index.cshtml.cs">
     <Files>
-      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" />
-      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" />
-      <File FileName="MovieDatabase/Pages/Index.cshtml" />
-      <File FileName="MovieDatabase/Program.cs" />
-      <File FileName="DataAccessLibrary/Models/Movie.cs" Line="17" Column="1" />
-      <File FileName="DataAccessLibrary/DataAccess/MovieContext.cs" />
+      <File FileName="MovieDatabase/Pages/Index.cshtml" Line="31" Column="17" />
+      <File FileName="MovieDatabase/Pages/Actors.cshtml" Line="22" Column="24" />
+      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" Line="74" Column="6" />
+      <File FileName="MovieDatabase/Pages/Actors.cshtml.cs" Line="35" Column="1" />
+      <File FileName="DataAccessLibrary/Models/Actor.cs" Line="1" Column="1" />
+      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" Line="21" Column="4" />
+      <File FileName="MovieDatabase/sampledata.json" Line="44" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,13 +22,13 @@
           <Node name="MovieDatabase" expanded="True">
             <Node name="DataAccessLibrary" expanded="True">
               <Node name="DataAccess" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Movie.cs" selected="True" />
-              </Node>
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Repositories" expanded="True" />
             </Node>
             <Node name="MovieDatabase" expanded="True">
               <Node name="Pages" expanded="True">
+                <Node name="Actors.cshtml" expanded="True" />
                 <Node name="Index.cshtml" expanded="True" />
               </Node>
             </Node>

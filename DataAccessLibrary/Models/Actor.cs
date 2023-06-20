@@ -8,6 +8,13 @@ namespace DataAccessLibrary.Models
 		public String ActorLastName { get; set; }
 		public DateTime Birthday { get; set; }
 
+		public Actor(string ActorFirstName, string ActorLastName, DateTime Birthday)
+		{
+			this.ActorFirstName = ActorFirstName;
+			this.ActorLastName = ActorLastName;
+			this.Birthday = Birthday;
+		}
+
 	}
 }
 

@@ -68,9 +68,11 @@ public class IndexModel : PageModel
         {
             return (NotFound());
         }
-        await _db.Delete(toRemove);
+        _db.Delete(toRemove);
         await _db.SaveChangesAsync(cancellationToken);
         return RedirectToAction(nameof(IndexModel));
     }
+
+    
 }
 
