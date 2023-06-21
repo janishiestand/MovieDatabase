@@ -42,6 +42,14 @@
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.pdb
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.genruntimeconfig.cache
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/- Is Working Version -/MovieDatabase/MovieDatabase/obj/Debug/net7.0/ref/MovieDatabase.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.csproj.AssemblyReference.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.GeneratedMSBuildEditorConfig.editorconfig
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.AssemblyInfoInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.AssemblyInfo.cs
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.csproj.CoreCompileInputs.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.MvcApplicationPartsAssemblyInfo.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.RazorAssemblyInfo.cache
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.RazorAssemblyInfo.cs
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/appsettings.Development.json
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/appsettings.json
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/sampledata.json
@@ -63,14 +71,6 @@
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/System.CodeDom.dll
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/DataAccessLibrary.dll
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/DataAccessLibrary.pdb
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.csproj.AssemblyReference.cache
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.GeneratedMSBuildEditorConfig.editorconfig
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.AssemblyInfoInputs.cache
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.AssemblyInfo.cs
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.csproj.CoreCompileInputs.cache
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.MvcApplicationPartsAssemblyInfo.cache
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.RazorAssemblyInfo.cache
-/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.RazorAssemblyInfo.cs
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/staticwebassets/msbuild.MovieDatabase.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/staticwebassets/msbuild.build.MovieDatabase.props
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.MovieDatabase.props

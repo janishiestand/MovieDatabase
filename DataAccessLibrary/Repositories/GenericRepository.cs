@@ -34,7 +34,7 @@ namespace DataAccessLibrary.Repositories
             _context.Set<T>().Update(obj);
         }
 
-        public async Task<T> GetById(int id, CancellationToken cancellationToken)
+        public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Set<T>().FindAsync(id);
         }

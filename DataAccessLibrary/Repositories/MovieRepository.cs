@@ -37,9 +37,9 @@ namespace DataAccessLibrary.Repositories
 			return actors;
 		}
 
-		public async Task<Movie> FirtOrDefaultAsync(int id)
+		public async Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken)
 		{
-			Movie m = await _context.Movies.Include(e => e.Actors).FirstOrDefaultAsync(x => x.id == id);
+			Movie m = await _context.Movies.Include(e => e.Actors).FirstOrDefaultAsync(x => x.id == id, cancellationToken);
 			return m;
 		}
 		

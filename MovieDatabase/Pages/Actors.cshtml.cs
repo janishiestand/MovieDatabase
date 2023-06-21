@@ -18,7 +18,7 @@ namespace MovieDatabase.Pages
         public IList<Actor> Actors { get; set; } = new List<Actor>();
 
         [BindProperty]
-        public Movie? Movie { get; set; } = default!;
+        public Movie Movie { get; set; } = default!;
 
         [BindProperty, Required]
         public string ActorFirstName { get; set; }
@@ -37,24 +37,14 @@ namespace MovieDatabase.Pages
 
         public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
         {
-
             if (id == null)
             {
                 return NotFound();
             }
-
-            Movie = await _context.FirtOrDefaultAsync(id);
+            Movie = await _context.FirstOrDefaultAsync(id, cancellationToken);
             Actors = await _context.GetActorsByMovie(Movie);
 
             return Page();
-
-        }
-
-        public async Task<Movie?> GetMovieById(int id, CancellationToken cancellationToken)
-        {
-            Movie? m = await _context.FindAsync(id, cancellationToken);
-                // await _context.GetById(id, cancellationToken);
-            return m;
         }
         
     }
