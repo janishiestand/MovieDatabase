@@ -1,48 +1,24 @@
 ﻿<Properties StartupConfiguration="{01AD16D8-9DF4-44F7-A675-F9825BA490EB}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieDatabase/Pages/Update.cshtml.cs">
-    <Files>
-      <File FileName="MovieDatabase/Pages/Update.cshtml" Line="22" Column="1" />
-      <File FileName="MovieDatabase/Pages/Update.cshtml.cs" Line="97" Column="10" />
-      <File FileName="MovieDatabase/Pages/Actors.cshtml.cs" Line="6" Column="34" />
-      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" Line="73" Column="9" />
-      <File FileName="DataAccessLibrary/Interfaces/IGenericRepository.cs" Line="1" Column="1" />
-      <File FileName="DataAccessLibrary/Repositories/GenericRepository.cs" />
-      <File FileName="DataAccessLibrary/Models/Movie.cs" Line="23" Column="40" />
-      <File FileName="MovieDatabase/Program.cs" Line="19" Column="1" />
-      <File FileName="DataAccessLibrary/DataAccess/MovieContext.cs" Line="9" Column="1" />
-      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" Line="16" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="MovieDatabase" expanded="True">
-            <Node name="DataAccessLibrary" expanded="True">
-              <Node name="DataAccess" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-            </Node>
-            <Node name="MovieDatabase">
-              <Node name="Pages" expanded="True">
-                <Node name="Actors.cshtml" expanded="True" />
-                <Node name="Index.cshtml" expanded="True" />
-                <Node name="Update.cshtml" expanded="True">
-                  <Node name="Update.cshtml.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Update.cshtml.cs" relfile="MovieDatabase/Pages/Update.cshtml.cs" line="93" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MovieDatabase/Pages/Actors.cshtml.cs">
+    <Files>
+      <File FileName="MovieDatabase/Pages/Update.cshtml" />
+      <File FileName="MovieDatabase/Pages/Update.cshtml.cs" />
+      <File FileName="MovieDatabase/Pages/Actors.cshtml.cs" Line="52" Column="1" />
+      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" />
+      <File FileName="DataAccessLibrary/Interfaces/IGenericRepository.cs" />
+      <File FileName="DataAccessLibrary/Repositories/GenericRepository.cs" />
+      <File FileName="DataAccessLibrary/Models/Movie.cs" />
+      <File FileName="MovieDatabase/Program.cs" />
+      <File FileName="DataAccessLibrary/DataAccess/MovieContext.cs" />
+      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" />
+      <File FileName="MovieDatabase/Pages/_ViewStart.cshtml" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
