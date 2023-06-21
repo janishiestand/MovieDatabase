@@ -2,6 +2,7 @@
 using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using DataAccessLibrary.Models;
 
 namespace DataAccessLibrary.Repositories
 {
@@ -37,6 +38,12 @@ namespace DataAccessLibrary.Repositories
         public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Set<T>().FindAsync(id);
+        }
+
+        public async Task<T?> FindAsync(int id, CancellationToken cancellationToken)
+        {
+            T? t = await _context.Set<T>().FindAsync(id, cancellationToken);
+            return t;
         }
     }
 }

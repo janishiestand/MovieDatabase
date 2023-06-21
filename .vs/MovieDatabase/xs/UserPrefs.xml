@@ -1,6 +1,5 @@
 ﻿<Properties StartupConfiguration="{01AD16D8-9DF4-44F7-A675-F9825BA490EB}|https">
-  <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="MovieDatabase/Pages/Actors.cshtml.cs">
     <Files>
       <File FileName="MovieDatabase/Pages/Update.cshtml" />
@@ -16,9 +15,10 @@
       <File FileName="MovieDatabase/Pages/_ViewStart.cshtml" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

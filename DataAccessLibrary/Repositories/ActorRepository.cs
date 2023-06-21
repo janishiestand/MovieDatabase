@@ -2,6 +2,8 @@
 using DataAccessLibrary.DataAccess;
 using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.Models;
+using MySqlConnector;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLibrary.Repositories
 {
@@ -12,7 +14,8 @@ namespace DataAccessLibrary.Repositories
 		public ActorRepository(MovieContext context) : base (context)
 		{
 			_context = context;
-		}
+
+        }
 
     }
 }

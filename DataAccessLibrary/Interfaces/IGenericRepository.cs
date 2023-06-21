@@ -9,6 +9,8 @@ namespace DataAccessLibrary.Interfaces
         public void Delete(T obj);
         public Task SaveChangesAsync(CancellationToken cancellationToken);
         public Task<T> GetByIdAsync(int id, CancellationToken cancellationToken);
-	}
+        public Task<T?> FindAsync(int id, CancellationToken cancellationToken);
+
+    }
 }
 

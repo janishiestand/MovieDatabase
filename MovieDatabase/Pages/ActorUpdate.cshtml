@@ -1,0 +1,28 @@
+﻿@page "{id:int?}"
+@model ActorUpdateModel
+@{
+    ViewData["Title"] = "Update Actor";
+}
+
+<form asp-page="ActorUpdate" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div style="padding-left: 40%;" class="input-group">
+        <div class="form-group mb-2">
+            <label asp-for="ActorUpdate.ActorFirstName" class="control-label"></label>
+            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.ActorFirstName" placeholder="First Name">
+            <span asp-validation-for=ActorUpdate.ActorFirstName class="invalid-feedback"></span>
+            <label></label>
+            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.ActorLastName" placeholder="Last Name">
+            <span asp-validation-for="ActorUpdate.ActorLastName" class="invalid-feedback"></span>
+            <label></label>
+            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.Birthday" placeholder="Birthday">
+            <span asp-validation-for="ActorUpdate.Birthday" class="invalid-feedback"></span>
+            <label></label>
+        </div>
+    </div>
+    <button style="width: 200px; margin: 0 40%;" class="btn btn-primary" type="submit">Update Actor</button>
+</form>
+<label></label>
+<div>
+    <a style="width: 200px; margin: 0 40%;" asp-page="Index">Back to List</a>
+</div>

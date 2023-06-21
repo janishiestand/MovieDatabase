@@ -32,6 +32,13 @@
                 <td>
                     @Convert.ToDateTime(item.Birthday).ToString("dd/MM/yyyy")
                 </td>
+                <td>
+                    <form asp-page="ActorUpdate" asp-page-handler="update" asp-route-id="@item.ActorId" method="post">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            Update
+                        </button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

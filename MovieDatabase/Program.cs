@@ -19,6 +19,8 @@ public class Program
         x.UseMySql(connectionString, sqlVersion));
 
         builder.Services.AddTransient<IMovieRepository, MovieRepository>();
+        builder.Services.AddTransient<IActorRepository, ActorRepository>();
+
 
         // Add services to the container.
         builder.Services.AddRazorPages();

@@ -20,12 +20,6 @@ namespace DataAccessLibrary.Repositories
 			return await _context.Movies.Include(e => e.Actors).ToListAsync(cancellationToken);
 		}
 
-		public async Task<Movie?> FindAsync(int id, CancellationToken cancellationToken)
-		{
-			Movie? movie = await _context.Movies.FindAsync(id, cancellationToken);
-			return movie;
-		}
-
 		public async Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken)
 		{
 			await _context.AddRangeAsync(movies, cancellationToken);
