@@ -35,14 +35,19 @@ namespace MovieDatabase.Pages
             _context = context;
         }
 
+        public async Task<IActionResult> OnGetAsync(int id, CancellationToken cancellationToken)
+        {
+            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            Movie = await _context.FirstOrDefaultAsync(id, cancellationToken);
-            Actors = await _context.GetActorsByMovie(Movie);
+            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
 
             return Page();
         }

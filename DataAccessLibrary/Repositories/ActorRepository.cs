@@ -17,6 +17,12 @@ namespace DataAccessLibrary.Repositories
 
         }
 
+		public async Task<int> GetMovieIdByActorId(int id, CancellationToken cancellationToken)
+		{
+			Actor a = await _context.Actors.FindAsync(id);
+			return a.Movieid;
+		}
+
     }
 }
 

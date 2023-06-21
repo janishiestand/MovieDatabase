@@ -38,19 +38,8 @@ namespace MovieDatabase.Pages
                 c => c.ActorFirstName, c => c.ActorLastName, c => c.Birthday))
             {
                 await _context.SaveChangesAsync(cancellationToken);
-
-
-                /*
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT Movieid FROM Actors WHERE ActorId =" + ActorUpdate.ActorId;
-                cmd.Connection = con;
-                */
-
-                // int? movId = await _context.GetMovieIDByActorID(ActorUpdate.ActorId, ActorUpdate);
-
-                // return RedirectToPage("./Actors", new { id = movId });
-                return RedirectToPage("./Actors");
+                int? movId = await _context.GetMovieIdByActorId(ActorUpdate.ActorId, cancellationToken);
+                return RedirectToPage("./Actors", new { id = movId });
             }
 
             return Page();

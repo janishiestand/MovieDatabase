@@ -25,13 +25,14 @@ namespace DataAccessLibrary.Repositories
 			await _context.AddRangeAsync(movies, cancellationToken);
 		}
 
-		public async Task<List<Actor>> GetActorsByMovie(Movie movie)
-		{
-			List<Actor> actors = movie.Actors.ToList();
-			return actors;
-		}
+        public async Task<List<Actor>> GetActorsByMovieID(int id, CancellationToken cancellationToken)
+        {
+			Movie movie = await FirstOrDefaultAsync(id, cancellationToken);
+            List<Actor> actors = movie.Actors.ToList();
+            return actors;
+        }
 
-		public async Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken)
+        public async Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken)
 		{
 			Movie m = await _context.Movies.Include(e => e.Actors).FirstOrDefaultAsync(x => x.id == id, cancellationToken);
 			return m;

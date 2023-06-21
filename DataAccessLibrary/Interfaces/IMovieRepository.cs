@@ -9,9 +9,8 @@ namespace DataAccessLibrary.Interfaces
 	{
 		public Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken);
 		public Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken);
-		public Task<List<Actor>> GetActorsByMovie(Movie movie);
-		public Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken);
-
+		public Task<List<Actor>> GetActorsByMovieID(int id, CancellationToken cancellationToken);
+        public Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken);
     }
 }
 
