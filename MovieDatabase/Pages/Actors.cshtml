@@ -19,6 +19,13 @@
             <th></th>
         </tr>
     </thead>
+    <div>
+        <form asp-page="AddActor" asp-page-handler="AddActor" method="get">
+            <button class="btn btn-sm btn-success">
+                Add Actor
+            </button>
+        </form>
+    </div>
     <tbody>
         @foreach (var item in Model.Actors)
         {

@@ -12,7 +12,7 @@ namespace MovieDatabase.Pages;
 public class IndexModel : PageModel
 {
     private readonly IMovieRepository _db;
-
+    
     public IList<Movie> Movies { get; set; } = new List<Movie>();
 
     [BindProperty, Required]

@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using DataAccessLibrary.Models;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 using DataAccessLibrary.Interfaces;
+using DataAccessLibrary.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MovieDatabase.Pages
 {
-	public class ActorsModel : PageModel
+	public class AddActorModel : PageModel
     {
-        private readonly IMovieRepository _context;
+        private readonly IActorRepository _context;
 
         public IList<Actor> Actors { get; set; } = new List<Actor>();
 
@@ -24,28 +28,22 @@ namespace MovieDatabase.Pages
         [BindProperty, Required]
         public DateTime Birthday { get; set; }
 
-        
-        public ActorsModel(IMovieRepository context)
+        public AddActorModel(IActorRepository context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> OnGetAsync(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
 
+            //int? movId = await _context.GetMovieIdByActorId(ActorUpdate.ActorId, cancellationToken);
+            // return RedirectToPage("./Actors", new { id = movId });
             return Page();
         }
-        
     }
 }

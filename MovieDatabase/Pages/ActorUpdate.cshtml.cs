@@ -35,7 +35,7 @@ namespace MovieDatabase.Pages
 
             if (await TryUpdateModelAsync<Actor>(
                 ActorToUpdate, "ActorUpdate",
-                c => c.ActorFirstName, c => c.ActorLastName, c => c.Birthday))
+                c => c.ActorFirstName, c => c.ActorLastName, c => c.Birthday, c => c.Movieid))
             {
                 await _context.SaveChangesAsync(cancellationToken);
                 int? movId = await _context.GetMovieIdByActorId(ActorUpdate.ActorId, cancellationToken);
