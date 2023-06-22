@@ -22,12 +22,12 @@ namespace MovieDatabase.Pages
         {
             _context = context;
         }
-
+        /*
         public async Task<IActionResult> OnGetAsync()
         {
             return Page();
         }
-
+        */
         public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
         {
             ActorUpdate = await _context.FindAsync(id, cancellationToken);
