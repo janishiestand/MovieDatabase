@@ -1,5 +1,25 @@
 ﻿@page
-@model MovieDatabase.Pages.SearchModel
+@model SearchModel
 @{
 }
 
+
+<tbody>
+    @foreach (var item in Model.Movie)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Convert.ToDateTime(item.ReleaseDate).ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+        </tr>
+    }
+</tbody>

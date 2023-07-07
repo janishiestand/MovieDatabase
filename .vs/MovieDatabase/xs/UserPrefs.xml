@@ -1,51 +1,40 @@
 ﻿<Properties StartupConfiguration="{01AD16D8-9DF4-44F7-A675-F9825BA490EB}|https">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieDatabase/Pages/ActorUpdate.cshtml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DataAccessLibrary/Repositories/MovieRepository.cs">
     <Files>
-      <File FileName="MovieDatabase/Pages/Index.cshtml" Line="55" Column="1" />
-      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" Line="15" Column="5" />
-      <File FileName="MovieDatabase/Pages/CreateNewMovie.cshtml" Line="27" Column="1" />
-      <File FileName="MovieDatabase/Pages/CreateNewMovie.cshtml.cs" Line="35" Column="1" />
-      <File FileName="MovieDatabase/Pages/AddActors.cshtml" Line="17" Column="81" />
-      <File FileName="MovieDatabase/Pages/AddActors.cshtml.cs" Line="29" Column="17" />
-      <File FileName="MovieDatabase/Pages/Actors.cshtml" Line="55" Column="7" />
-      <File FileName="MovieDatabase/Pages/Actors.cshtml.cs" Line="24" Column="9" />
-      <File FileName="MovieDatabase/Pages/ActorUpdate.cshtml" Line="27" Column="77" />
-      <File FileName="MovieDatabase/Pages/ActorUpdate.cshtml.cs" Line="42" Column="60" />
+      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" Line="15" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MovieDatabase" expanded="True">
+          <Node name="MovieDatabase">
             <Node name="DataAccessLibrary" expanded="True">
+              <Node name="DataAccess" expanded="True" />
               <Node name="Interfaces" expanded="True" />
+              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Repositories" expanded="True" />
             </Node>
-            <Node name="MovieDatabase">
+            <Node name="MovieDatabase" expanded="True">
               <Node name="Pages" expanded="True">
                 <Node name="Actors.cshtml" expanded="True" />
-                <Node name="ActorUpdate.cshtml" expanded="True">
-                  <Node name="ActorUpdate.cshtml.cs" selected="True" />
-                </Node>
+                <Node name="ActorUpdate.cshtml" expanded="True" />
                 <Node name="AddActor.cshtml" expanded="True" />
                 <Node name="CreateNewMovie.cshtml" expanded="True" />
                 <Node name="Index.cshtml" expanded="True" />
                 <Node name="Search.cshtml" expanded="True" />
+                <Node name="Update.cshtml" expanded="True" />
               </Node>
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>

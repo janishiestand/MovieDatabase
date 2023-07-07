@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 using DataAccessLibrary.DataAccess;
 using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.Models;
@@ -9,10 +11,12 @@ namespace DataAccessLibrary.Repositories
 	public class MovieRepository : GenericRepository<Movie>, IMovieRepository
     {
 		private readonly MovieContext _context;
+		private readonly IMovieApiClient _movieApiClient;
 
-		public MovieRepository(MovieContext context) : base (context)
+		public MovieRepository(MovieContext context, IMovieApiClient movieApiClient) : base (context)
 		{
 			_context = context;
+			_movieApiClient = movieApiClient;
 		}
 
 		public async Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken)
@@ -39,6 +43,22 @@ namespace DataAccessLibrary.Repositories
 		}
 		
 
+        public async Task<Movie> SearchMovieByTitle(string movieTitle, CancellationToken cancellationToken)
+        {
+            OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle);
+			int rt = Int32.Parse(Regex.Match(movieQuery.Runtime, @"\d+").Value);
+			DateTime dateTime = DateTime.Parse(movieQuery.Released);
+            Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
+			int ratingVal = imdbRating?.GetOMBdRating() ?? 0;
+			Movie requestedMovie = new Movie(
+				MovieName: movieQuery.Title,
+				Duration: rt,
+				ReleaseDate: dateTime,
+				Rating: ratingVal
+				);
+
+            return requestedMovie;
+        }
     }
 }
 

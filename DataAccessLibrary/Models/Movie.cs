@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace DataAccessLibrary.Models
 {
@@ -8,15 +10,19 @@ namespace DataAccessLibrary.Models
 		public int id { get; set; }
 
 		[Required]
-		public string MovieName { get; set; }
+        [JsonPropertyName("Title")]
+        public string MovieName { get; set; }
 
         [Required]
+        [JsonProperty("Runtime")]
         public int Duration { get; set; }
 
         [Required]
+        [JsonProperty("Released")]
         public DateTime ReleaseDate { get; set; }
 
 		[Required]
+        [JsonProperty("Ratings")]
         public int Rating { get; set; }
 
         public List<Actor>? Actors { get; set; } = new List<Actor>();

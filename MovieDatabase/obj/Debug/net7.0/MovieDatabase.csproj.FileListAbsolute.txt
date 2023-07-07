@@ -87,3 +87,4 @@
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.pdb
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/MovieDatabase.genruntimeconfig.cache
 /Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/obj/Debug/net7.0/ref/MovieDatabase.dll
+/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/bin/Debug/net7.0/Newtonsoft.Json.dll

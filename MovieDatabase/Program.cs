@@ -17,10 +17,10 @@ public class Program
         string? connectionString = builder.Configuration.GetConnectionString("Default");
         builder.Services.AddDbContext<MovieContext>(x =>
         x.UseMySql(connectionString, sqlVersion));
-
+      
         builder.Services.AddTransient<IMovieRepository, MovieRepository>();
         builder.Services.AddTransient<IActorRepository, ActorRepository>();
-
+        builder.Services.AddHttpClient<IMovieApiClient, MovieApiClient>();
 
         // Add services to the container.
         builder.Services.AddRazorPages();

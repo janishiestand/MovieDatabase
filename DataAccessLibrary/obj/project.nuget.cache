@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KfGRjIMEOZui4adCCBC5N2e+fAUY6zAJGIFUSy7W9vw5eA4Tet2Bk3NehV41OU0Gv57B3Kr1ap+0xabLbcc9oA==",
+  "dgSpecHash": "q/XILG48a65Rk5HvJ+cgRRylKghd/5rwoaxnNohQXb9Skn8R2pKqL+QAVoNB0xZAuIAHyRevZiOqei5tegWY2g==",
   "success": true,
   "projectFilePath": "/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/DataAccessLibrary/DataAccessLibrary.csproj",
   "expectedPackageFiles": [
@@ -22,10 +22,12 @@
     "/Users/janishiestand/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/Users/janishiestand/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/janishiestand/.nuget/packages/mysqlconnector/2.2.5/mysqlconnector.2.2.5.nupkg.sha512",
+    "/Users/janishiestand/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/janishiestand/.nuget/packages/pomelo.entityframeworkcore.mysql/7.0.0/pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "/Users/janishiestand/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
+    "/Users/janishiestand/.nuget/packages/system.net.http.json/7.0.1/system.net.http.json.7.0.1.nupkg.sha512",
     "/Users/janishiestand/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/janishiestand/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/Users/janishiestand/.nuget/packages/system.text.json/7.0.2/system.text.json.7.0.2.nupkg.sha512"
   ],
   "logs": []
 }

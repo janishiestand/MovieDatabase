@@ -28,6 +28,12 @@
                 Add Movie
             </button>
         </form>
+        <form asp-page="Search" asp-page-handler="Search" method="post">
+            <button class="btn btn-sm btn-success">
+                Search
+            </button>
+            <input type="text" name="MovieName" value="" />
+        </form>
     </div>
     <tbody>
         @foreach (var item in Model.Movies)
