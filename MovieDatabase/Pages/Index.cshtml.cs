@@ -67,8 +67,6 @@ public class IndexModel : PageModel
         return RedirectToAction(nameof(IndexModel));
     }
 
-    
-
 
 }
 

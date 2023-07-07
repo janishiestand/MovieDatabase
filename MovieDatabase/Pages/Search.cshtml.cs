@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.Models;
@@ -35,20 +36,18 @@ namespace MovieDatabase.Pages
 
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
         {
-            /*
-            Movie m = Movies[0];
-            await _db.AddAsync(m, cancellationToken);
-            await _db.SaveChangesAsync(cancellationToken);
-            */
-            return RedirectToAction(nameof(IndexModel));
-
-        }
-
-        public async Task<IActionResult> OnPostAsync(string MovieName, CancellationToken cancellationToken)
-        {
             Movie m = await _db.SearchMovieByTitle(MovieName, cancellationToken);
             Movies.Add(m);
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
+        {
+            Movie m = await _db.SearchMovieByTitle(MovieName, cancellationToken);
+            await _db.AddAsync(m, cancellationToken);
+            await _db.SaveChangesAsync(cancellationToken);
+            Movies = await _db.GetAllMoviesAsync(cancellationToken);
+            return RedirectToPage("./Index");
         }
 
     }

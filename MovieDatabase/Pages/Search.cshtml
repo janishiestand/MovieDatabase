@@ -25,7 +25,8 @@
         }
     </tbody>
 </table>
-<form asp-page="Index" method="post">
+<form asp-page="Search" method="post">
+    <input type="hidden" asp-for="MovieName" value="@Model.MovieName" />
     <button class="btn btn-primary" type="submit">Add Movie To Library</button>
 </form>
 <a style="width: 200px; margin: 0 40%;" asp-page="Index" asp-route-id="">Return to Homepage</a>
