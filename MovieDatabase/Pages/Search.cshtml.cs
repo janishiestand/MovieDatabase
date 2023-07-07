@@ -34,20 +34,39 @@ namespace MovieDatabase.Pages
             _db = db;
         }
 
+
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
         {
-            Movie m = await _db.SearchMovieByTitle(MovieName, cancellationToken);
-            Movies.Add(m);
-            return Page();
+            return await PerformSearch(cancellationToken, addToDatabase: false);
         }
 
         public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
-            Movie m = await _db.SearchMovieByTitle(MovieName, cancellationToken);
-            await _db.AddAsync(m, cancellationToken);
-            await _db.SaveChangesAsync(cancellationToken);
-            Movies = await _db.GetAllMoviesAsync(cancellationToken);
-            return RedirectToPage("./Index");
+            return await PerformSearch(cancellationToken, addToDatabase: true);
+        }
+
+        private async Task<IActionResult> PerformSearch(CancellationToken cancellationToken, bool addToDatabase)
+        {
+            OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, cancellationToken);
+            if (query != null)
+            {
+                Movie m = await _db.ConvertSearchResult(query, cancellationToken);
+                Movies.Add(m);
+
+                if (addToDatabase)
+                {
+                    await _db.AddAsync(m, cancellationToken);
+                    await _db.SaveChangesAsync(cancellationToken);
+                    Movies = await _db.GetAllMoviesAsync(cancellationToken);
+                    return RedirectToPage("./Index");
+                }
+
+                return Page();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
     }

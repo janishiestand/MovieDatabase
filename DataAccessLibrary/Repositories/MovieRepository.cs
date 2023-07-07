@@ -42,11 +42,10 @@ namespace DataAccessLibrary.Repositories
 			return m;
 		}
 		
-        public async Task<Movie> SearchMovieByTitle(string movieTitle, CancellationToken cancellationToken)
+        public async Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, CancellationToken cancellationToken)
         {
 			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle);
-			Movie movie = await ConvertSearchResult(movieQuery, cancellationToken);
-            return movie;
+			return movieQuery;
         }
 
 		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
