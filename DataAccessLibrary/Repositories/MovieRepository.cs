@@ -42,22 +42,28 @@ namespace DataAccessLibrary.Repositories
 			return m;
 		}
 		
-
         public async Task<Movie> SearchMovieByTitle(string movieTitle, CancellationToken cancellationToken)
         {
-            OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle);
-			int rt = Int32.Parse(Regex.Match(movieQuery.Runtime, @"\d+").Value);
-			DateTime dateTime = DateTime.Parse(movieQuery.Released);
-            Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
-			int ratingVal = imdbRating?.GetOMBdRating() ?? 0;
-			Movie requestedMovie = new Movie(
-				MovieName: movieQuery.Title,
-				Duration: rt,
-				ReleaseDate: dateTime,
-				Rating: ratingVal
-				);
+			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle);
+			Movie movie = await ConvertSearchResult(movieQuery, cancellationToken);
+            return movie;
+        }
 
-            return requestedMovie;
+		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
+		{
+            int rt = Int32.Parse(Regex.Match(movieQuery.Runtime, @"\d+").Value);
+            DateTime dateTime = DateTime.Parse(movieQuery.Released);
+            Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
+            int ratingVal = imdbRating?.GetOMBdRating() ?? 0;
+
+			Movie requestedMovie = new Movie(
+			MovieName: movieQuery.Title,
+			Duration: rt,
+			ReleaseDate: dateTime,
+			Rating: ratingVal
+			);
+
+			return requestedMovie;
         }
     }
 }

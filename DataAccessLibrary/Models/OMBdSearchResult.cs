@@ -8,11 +8,6 @@ namespace DataAccessLibrary.Models
 {
 	public class OMBdSearchResult
 	{
-        /*
-        [JsonPropertyName("Search")]
-        public IList<Movie> Search { get; set; }
-        */
-
         [JsonPropertyName("Title")]
         public string Title { get; set; }
 

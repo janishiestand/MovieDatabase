@@ -4,22 +4,29 @@
 }
 
 
-<tbody>
-    @foreach (var item in Model.Movie)
-    {
+<table>
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MovieName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Convert.ToDateTime(item.ReleaseDate).ToString("dd/MM/yyyy")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
+            <th>Movie Name</th>
+            <th>Duration</th>
+            <th>Release Date</th>
+            <th>Rating</th>
         </tr>
-    }
-</tbody>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>@item.MovieName</td>
+                <td>@item.Duration</td>
+                <td>@Convert.ToDateTime(item.ReleaseDate).ToString("dd/MM/yyyy")</td>
+                <td>@item.Rating</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-page="Index" method="post">
+    <button class="btn btn-primary" type="submit">Add Movie To Library</button>
+</form>
+<a style="width: 200px; margin: 0 40%;" asp-page="Index" asp-route-id="">Return to Homepage</a>
+

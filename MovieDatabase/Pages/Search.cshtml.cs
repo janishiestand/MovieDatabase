@@ -14,7 +14,7 @@ namespace MovieDatabase.Pages
     {
         private readonly IMovieRepository _db;
 
-        public IList<Movie> Movie { get; set; } = new List<Movie>();
+        public IList<Movie> Movies { get; set; } = new List<Movie>();
 
         [BindProperty(SupportsGet = true), Required]
         public string MovieName { get; set; }
@@ -33,18 +33,23 @@ namespace MovieDatabase.Pages
             _db = db;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
         {
-            return Page();
+            /*
+            Movie m = Movies[0];
+            await _db.AddAsync(m, cancellationToken);
+            await _db.SaveChangesAsync(cancellationToken);
+            */
+            return RedirectToAction(nameof(IndexModel));
+
         }
 
         public async Task<IActionResult> OnPostAsync(string MovieName, CancellationToken cancellationToken)
         {
             Movie m = await _db.SearchMovieByTitle(MovieName, cancellationToken);
-            Movie.Add(m);
-            await _db.SaveChangesAsync(cancellationToken);
+            Movies.Add(m);
             return Page();
-
         }
+
     }
 }
