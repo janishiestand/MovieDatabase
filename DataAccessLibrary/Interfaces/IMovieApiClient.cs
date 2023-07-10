@@ -5,7 +5,7 @@ namespace DataAccessLibrary.Interfaces
 {
 	public interface IMovieApiClient
 	{
-        Task<OMBdSearchResult> SearchMovies(string searchQuery);
+        Task<OMBdSearchResult> SearchMovies(string searchQuery, string year, CancellationToken cancellationToken);
     }
 }
 

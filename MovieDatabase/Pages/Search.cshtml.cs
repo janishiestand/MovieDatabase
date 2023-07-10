@@ -20,6 +20,9 @@ namespace MovieDatabase.Pages
         [BindProperty(SupportsGet = true), Required]
         public string MovieName { get; set; }
 
+        [BindProperty(SupportsGet = true), Required]
+        public string Year { get; set; }
+
         [BindProperty, Required]
         public int Duration { get; set; }
 
@@ -46,7 +49,7 @@ namespace MovieDatabase.Pages
 
         private async Task<IActionResult> PerformSearch(CancellationToken cancellationToken, bool addToDatabase)
         {
-            OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, cancellationToken);
+            OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, Year, cancellationToken);
             if (query.Response != "False")
             {
                 Movie m = await _db.ConvertSearchResult(query, cancellationToken);

@@ -30,10 +30,11 @@
         </form>
         <div style="margin-top: 10px;"></div>
         <form asp-page="Search" asp-page-handler="Search" method="get">
+            <input type="text" name="MovieName" placeholder="Movie Title" value="" />
+            <input type="text" name="Year" placeholder="Year" value="" />
             <button class="btn btn-sm btn-success">
                 Search
             </button>
-            <input type="text" name="MovieName" value="" />
             <div class="error-message" style="font-size: 20px;">
                 <b>@TempData["ErrorMessage"]</b>
             </div>

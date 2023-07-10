@@ -19,7 +19,13 @@ namespace DataAccessLibrary.Repositories
 			_movieApiClient = movieApiClient;
 		}
 
-		public async Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken)
+        public new async Task<Movie?> FindAsync(int id, CancellationToken cancellationToken)
+        {
+			Movie? Movie = await _context.Movies.Include(e => e.Actors).FirstOrDefaultAsync(x => x.id == id, cancellationToken);
+            return Movie;
+        }
+
+        public async Task<List<Movie>> GetAllMoviesAsync(CancellationToken cancellationToken)
 		{
 			return await _context.Movies.Include(e => e.Actors).ToListAsync(cancellationToken);
 		}
@@ -42,11 +48,10 @@ namespace DataAccessLibrary.Repositories
 			return m;
 		}
 		
-        public async Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, CancellationToken cancellationToken)
+        public async Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string year, CancellationToken cancellationToken)
         {
-			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle);
+			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle, year, cancellationToken);
             return movieQuery;
-			
         }
 
 		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
@@ -63,19 +68,20 @@ namespace DataAccessLibrary.Repositories
 				string lastName = (nameParts.Length > 1) ? nameParts[1] : string.Empty;
 
 				return new Actor
-				{
-					ActorFirstName = firstName,
-					ActorLastName = lastName,
-					Birthday = DateTime.MinValue
-				};
+					{
+						ActorFirstName = firstName,
+						ActorLastName = lastName,
+						Birthday = DateTime.MinValue
+					};
 				}).ToList();
 
-			Movie requestedMovie = new Movie(
-			MovieName: movieQuery.Title,
-			Duration: rt,
-			ReleaseDate: dateTime,
-			Rating: ratingVal,
-			Actors: QueriedActors
+			Movie requestedMovie = new Movie
+			(
+				MovieName: movieQuery.Title,
+				Duration: rt,
+				ReleaseDate: dateTime,
+				Rating: ratingVal,
+				Actors: QueriedActors
 			);
 
 			return requestedMovie;

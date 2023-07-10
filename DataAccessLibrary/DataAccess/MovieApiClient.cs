@@ -16,10 +16,15 @@ namespace DataAccessLibrary.DataAccess
 			_httpClient = httpClient;
 		}
 
-		public async Task<OMBdSearchResult> SearchMovies(string searchQuery)
+		public async Task<OMBdSearchResult> SearchMovies(string searchQuery, string year, CancellationToken cancellationToken)
 		{
 			string apiKey = "3a857115";
             string apiUrl = $"http://www.omdbapi.com/?apikey={apiKey}&t={Uri.EscapeDataString(searchQuery)}";
+
+            if (year != null)
+			{
+				apiUrl = apiUrl + $"&y={Uri.EscapeDataString(year)}";
+            }
 
             var response = await _httpClient.GetAsync(apiUrl);
 			if (response.IsSuccessStatusCode)
