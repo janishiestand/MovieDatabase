@@ -1,20 +1,19 @@
 ﻿<Properties StartupConfiguration="{01AD16D8-9DF4-44F7-A675-F9825BA490EB}|https">
-  <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="DataAccessLibrary/Repositories/MovieRepository.cs">
     <Files>
-      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" Line="15" Column="23" />
+      <File FileName="MovieDatabase/Pages/Index.cshtml.cs" Line="70" Column="1" />
+      <File FileName="MovieDatabase/Pages/Search.cshtml.cs" Line="53" Column="1" />
+      <File FileName="DataAccessLibrary/Repositories/MovieRepository.cs" Line="48" Column="31" />
+      <File FileName="DataAccessLibrary/Interfaces/IMovieApiClient.cs" Line="1" Column="1" />
+      <File FileName="DataAccessLibrary/DataAccess/MovieApiClient.cs" Line="34" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MovieDatabase">
+          <Node name="MovieDatabase" expanded="True">
             <Node name="DataAccessLibrary" expanded="True">
               <Node name="DataAccess" expanded="True" />
               <Node name="Interfaces" expanded="True" />
-              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Repositories" expanded="True" />
             </Node>
@@ -32,9 +31,22 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MovieDatabase PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Search.cshtml.cs" relfile="MovieDatabase/Pages/Search.cshtml.cs" line="51" column="1" />
+      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Search.cshtml.cs" relfile="MovieDatabase/Pages/Search.cshtml.cs" line="50" column="1" />
+      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Search.cshtml.cs" relfile="MovieDatabase/Pages/Search.cshtml.cs" line="52" column="1" />
+      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Search.cshtml.cs" relfile="MovieDatabase/Pages/Search.cshtml.cs" line="53" column="1" />
+      <Breakpoint file="/Users/janishiestand/Desktop/IntelliJ Projects/Visual Studio/MovieDatabase/MovieDatabase/Pages/Search.cshtml.cs" relfile="MovieDatabase/Pages/Search.cshtml.cs" line="54" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

@@ -66,7 +66,5 @@ public class IndexModel : PageModel
         await _db.SaveChangesAsync(cancellationToken);
         return RedirectToAction(nameof(IndexModel));
     }
-
-
 }
 

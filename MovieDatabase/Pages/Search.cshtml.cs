@@ -48,7 +48,7 @@ namespace MovieDatabase.Pages
         private async Task<IActionResult> PerformSearch(CancellationToken cancellationToken, bool addToDatabase)
         {
             OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, cancellationToken);
-            if (query != null)
+            if (query.Response != "False")
             {
                 Movie m = await _db.ConvertSearchResult(query, cancellationToken);
                 Movies.Add(m);
@@ -65,7 +65,8 @@ namespace MovieDatabase.Pages
             }
             else
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Movie not found.";
+                return RedirectToPage("./Index");
             }
         }
 
