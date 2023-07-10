@@ -3,31 +3,38 @@
 @{
 }
 
-
-<table>
-    <thead>
-        <tr>
-            <th>Movie Name</th>
-            <th>Duration</th>
-            <th>Release Date</th>
-            <th>Rating</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Movies)
-        {
+<div class="movie-table">
+    <table>
+        <thead>
             <tr>
-                <td>@item.MovieName</td>
-                <td>@item.Duration</td>
-                <td>@Convert.ToDateTime(item.ReleaseDate).ToString("dd/MM/yyyy")</td>
-                <td>@item.Rating</td>
+                <th>Movie Name</th>
+                <th>Duration</th>
+                <th>Release Date</th>
+                <th>Rating</th>
             </tr>
-        }
-    </tbody>
-</table>
-<form asp-page="Search" method="post">
-    <input type="hidden" asp-for="MovieName" value="@Model.MovieName" />
-    <button class="btn btn-primary" type="submit">Add Movie To Library</button>
-</form>
-<a style="width: 200px; margin: 0 40%;" asp-page="Index" asp-route-id="">Return to Homepage</a>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movies)
+            {
+                <tr>
+                    <td>@item.MovieName</td>
+                    <td>@item.Duration min.</td>
+                    <td>@item.ReleaseDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Rating%</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="add-movie-form">
+    <form asp-page="Search" method="post">
+        <input type="hidden" asp-for="MovieName" value="@Model.MovieName" />
+        <button class="btn btn-primary" type="submit">Add Movie To Library</button>
+    </form>
+</div>
+
+<div class="return-homepage">
+    <a asp-page="Index" asp-route-id="">Return to Homepage</a>
+</div>
 

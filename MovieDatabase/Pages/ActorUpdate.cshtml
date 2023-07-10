@@ -8,7 +8,6 @@
     <div asp-validation-summary="ModelOnly"></div>
     <div style="padding-left: 40%;" class="input-group">
         <div class="form-group mb-2">
-            <label asp-for="ActorUpdate.ActorFirstName" class="control-label"></label>
             <input style="text-align:center" class="form-control" asp-for="ActorUpdate.ActorFirstName" placeholder="First Name">
             <span asp-validation-for=ActorUpdate.ActorFirstName class="invalid-feedback"></span>
             <label></label>
@@ -24,5 +23,5 @@
 </form>
 <label></label>
 <div>
-    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="" method="post">Back to List</a>
+    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="@Model.ActorUpdate.Movieid" method="post">Back to List</a>
 </div>

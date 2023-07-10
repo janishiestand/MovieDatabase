@@ -34,7 +34,6 @@ namespace MovieDatabase.Pages
             _db = db;
         }
 
-
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
         {
             return await PerformSearch(cancellationToken, addToDatabase: false);

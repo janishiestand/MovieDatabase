@@ -41,8 +41,6 @@ namespace MovieDatabase.Pages
         public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
         {
 
-            //int? movId = await _context.GetMovieIdByActorId(ActorUpdate.ActorId, cancellationToken);
-            // return RedirectToPage("./Actors", new { id = movId });
             return Page();
         }
     }
