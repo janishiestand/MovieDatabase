@@ -27,6 +27,9 @@ public class IndexModel : PageModel
     [BindProperty, Required]
     public int Rating { get; set; }
 
+    [BindProperty]
+    public List<Actor> Actors { get; set; }
+
 
     public IndexModel(IMovieRepository db)
     {
@@ -46,7 +49,8 @@ public class IndexModel : PageModel
                 MovieName: MovieName,
                 Duration: Duration,
                 ReleaseDate: ReleaseDate,
-                Rating: Rating
+                Rating: Rating,
+                Actors: Actors
                 );
             await _db.AddAsync(movie, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);

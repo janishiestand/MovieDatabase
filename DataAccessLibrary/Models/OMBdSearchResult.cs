@@ -20,6 +20,9 @@ namespace DataAccessLibrary.Models
         [JsonPropertyName("Ratings")]
         public List<Rating> Ratings { get; set; }
 
+        [JsonPropertyName("Actors")]
+        public string Actors { get; set; }
+
         [JsonPropertyName("Response")]
         public string? Response { get; set; }
 
@@ -27,12 +30,13 @@ namespace DataAccessLibrary.Models
 
         public OMBdSearchResult() { }
 
-        public OMBdSearchResult(string Title, string Released, string Runtime, List<Rating> Ratings, string? Response)
+        public OMBdSearchResult(string Title, string Released, string Runtime, List<Rating> Ratings, string Actors, string? Response)
         {
             this.Title = Title;
             this.Released = Released;
             this.Runtime = Runtime;
             this.Ratings = Ratings;
+            this.Actors = Actors;
             this.Response = Response;
         }
     }

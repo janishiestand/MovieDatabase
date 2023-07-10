@@ -56,11 +56,26 @@ namespace DataAccessLibrary.Repositories
             Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
             int ratingVal = imdbRating?.GetOMBdRating() ?? 0;
 
+			List<Actor> QueriedActors = movieQuery.Actors.Split(',').Select(a =>
+			{
+				string[] nameParts = a.Trim().Split(' ');
+				string firstName = nameParts[0];
+				string lastName = (nameParts.Length > 1) ? nameParts[1] : string.Empty;
+
+				return new Actor
+				{
+					ActorFirstName = firstName,
+					ActorLastName = lastName,
+					Birthday = DateTime.MinValue
+				};
+				}).ToList();
+
 			Movie requestedMovie = new Movie(
 			MovieName: movieQuery.Title,
 			Duration: rt,
 			ReleaseDate: dateTime,
-			Rating: ratingVal
+			Rating: ratingVal,
+			Actors: QueriedActors
 			);
 
 			return requestedMovie;

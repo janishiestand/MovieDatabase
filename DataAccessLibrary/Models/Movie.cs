@@ -26,16 +26,18 @@ namespace DataAccessLibrary.Models
         public int Rating { get; set; }
 
         public List<Actor>? Actors { get; set; } = new List<Actor>();
-		public String? Director { get; set; }
+
+		public string? Director { get; set; }
 
         public Movie() { }
 
-        public Movie(string MovieName, int Duration, DateTime ReleaseDate, int Rating)
+        public Movie(string MovieName, int Duration, DateTime ReleaseDate, int Rating, List<Actor>? Actors)
         {
             this.MovieName = MovieName;
             this.Duration = Duration;
             this.ReleaseDate = ReleaseDate;
             this.Rating = Rating;
+            this.Actors = Actors;
         }
 
     }
