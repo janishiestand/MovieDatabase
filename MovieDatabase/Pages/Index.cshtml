@@ -28,12 +28,13 @@
                 Add Movie
             </button>
         </form>
+        <div style="margin-top: 10px;"></div>
         <form asp-page="Search" asp-page-handler="Search" method="get">
             <button class="btn btn-sm btn-success">
                 Search
             </button>
             <input type="text" name="MovieName" value="" />
-            <div class="error-message" style="font-size: 20px;" >
+            <div class="error-message" style="font-size: 20px;">
                 <b>@TempData["ErrorMessage"]</b>
             </div>
         </form>
