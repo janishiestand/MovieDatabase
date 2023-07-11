@@ -67,7 +67,9 @@ namespace DataAccessLibrary.Repositories
 
 		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
 		{
-            int rt = Int32.Parse(Regex.Match(movieQuery.Runtime, @"\d+").Value);
+			string runtimeVal = Regex.Match(movieQuery.Runtime, @"\d+").Value;
+			int rt;;
+			if (!int.TryParse(runtimeVal, out rt)) { rt = 0; }
             DateTime dateTime = DateTime.Parse(movieQuery.Released);
             Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
             int ratingVal = imdbRating?.GetOMBdRating() ?? 0;

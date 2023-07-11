@@ -66,7 +66,6 @@ public class IndexModel : PageModel
         }
 
         Movies = await moviesQuery.ToListAsync(cancellationToken);
-
     }
 
     public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
@@ -98,7 +97,5 @@ public class IndexModel : PageModel
         await _db.SaveChangesAsync(cancellationToken);
         return RedirectToAction(nameof(IndexModel));
     }
-
-
 }
 
