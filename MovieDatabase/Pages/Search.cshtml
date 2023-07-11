@@ -11,6 +11,7 @@
                 <th>Duration</th>
                 <th>Release Date</th>
                 <th>Rating</th>
+                <th>Actors</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,12 @@
                     <td>@item.Duration min.</td>
                     <td>@item.ReleaseDate.ToString("dd/MM/yyyy")</td>
                     <td>@item.Rating%</td>
+                    <td>
+                        @foreach (var actor in item.Actors)
+                        {
+                            <div>@actor.ActorFirstName @actor.ActorLastName</div>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

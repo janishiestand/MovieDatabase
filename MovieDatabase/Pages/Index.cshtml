@@ -8,18 +8,17 @@
     <thead>
         <tr>
             <th>
-                Title
+                <a asp-page="./Index" asp-route-sortBy="title" asp-route-isAscending="@(Model.SortBy == "title" ? !Model.IsAscending : true)">Title</a>
             </th>
             <th>
-                Duration
+                <a asp-page="./Index" asp-route-sortBy="duration" asp-route-isAscending="@(Model.SortBy == "duration" ? !Model.IsAscending : true)">Duration</a>
             </th>
             <th>
-                Release Date
+                <a asp-page="./Index" asp-route-sortBy="releaseDate" asp-route-isAscending="@(Model.SortBy == "releaseDate" ? !Model.IsAscending : true)">Release Date</a>
             </th>
             <th>
-                Rating
+                <a asp-page="./Index" asp-route-sortBy="rating" asp-route-isAscending="@(Model.SortBy == "rating" ? !Model.IsAscending : true)">Rating</a>
             </th>
-            <th></th>
         </tr>
     </thead>
     <div>
@@ -31,7 +30,7 @@
         <div style="margin-top: 10px;"></div>
         <form asp-page="Search" asp-page-handler="Search" method="get">
             <input type="text" name="MovieName" placeholder="Movie Title" value="" />
-            <input type="text" name="Year" placeholder="Year" value="" />
+            <input type="text" name="Year" placeholder="Year" style="width: 60px;" min="1800" max="2099" value="" />
             <button class="btn btn-sm btn-success">
                 Search
             </button>

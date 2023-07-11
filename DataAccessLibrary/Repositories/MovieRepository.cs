@@ -30,7 +30,18 @@ namespace DataAccessLibrary.Repositories
 			return await _context.Movies.Include(e => e.Actors).ToListAsync(cancellationToken);
 		}
 
-		public async Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken)
+        public async Task<IQueryable<Movie>> QueryAllMoviesAsync(CancellationToken cancellationToken)
+        {
+
+			return await Task.FromResult(QueryAllMovies(cancellationToken));
+        }
+
+        public IQueryable<Movie> QueryAllMovies(CancellationToken cancellationToken)
+        {
+            return _context.Movies.Include(e => e.Actors);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken)
 		{
 			await _context.AddRangeAsync(movies, cancellationToken);
 		}

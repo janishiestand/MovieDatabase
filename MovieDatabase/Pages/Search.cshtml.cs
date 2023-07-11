@@ -32,6 +32,9 @@ namespace MovieDatabase.Pages
         [BindProperty, Required]
         public int Rating { get; set; }
 
+        [BindProperty]
+        public List<Actor> Actors { get; set; }
+
         public SearchModel(IMovieRepository db)
         {
             _db = db;
@@ -50,6 +53,10 @@ namespace MovieDatabase.Pages
         private async Task<IActionResult> PerformSearch(CancellationToken cancellationToken, bool addToDatabase)
         {
             OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, Year, cancellationToken);
+            if (query == null)
+            {
+                return await MovieNotFound(cancellationToken);
+            }
             if (query.Response != "False")
             {
                 Movie m = await _db.ConvertSearchResult(query, cancellationToken);
@@ -62,14 +69,18 @@ namespace MovieDatabase.Pages
                     Movies = await _db.GetAllMoviesAsync(cancellationToken);
                     return RedirectToPage("./Index");
                 }
-
                 return Page();
             }
             else
             {
-                TempData["ErrorMessage"] = "Movie not found.";
-                return RedirectToPage("./Index");
+                return await MovieNotFound(cancellationToken);  
             }
+        }
+
+        private async Task<IActionResult> MovieNotFound(CancellationToken cancellationToken)
+        {
+            TempData["ErrorMessage"] = "Movie not found.";
+            return RedirectToPage("./Index");
         }
 
     }

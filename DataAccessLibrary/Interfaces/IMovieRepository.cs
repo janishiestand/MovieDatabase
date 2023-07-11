@@ -14,6 +14,8 @@ namespace DataAccessLibrary.Interfaces
 		public Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string year, CancellationToken cancellationToken);
 		public Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken);
 		public new Task<Movie?> FindAsync(int id, CancellationToken cancellationToken);
+		public Task<IQueryable<Movie>> QueryAllMoviesAsync(CancellationToken cancellationToken);
+		public IQueryable<Movie> QueryAllMovies(CancellationToken cancellationToken);
     }   
 }
 

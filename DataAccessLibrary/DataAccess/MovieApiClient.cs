@@ -18,6 +18,10 @@ namespace DataAccessLibrary.DataAccess
 
 		public async Task<OMBdSearchResult> SearchMovies(string searchQuery, string year, CancellationToken cancellationToken)
 		{
+			if (searchQuery == null)
+			{
+				return null;
+			}
 			string apiKey = "3a857115";
             string apiUrl = $"http://www.omdbapi.com/?apikey={apiKey}&t={Uri.EscapeDataString(searchQuery)}";
 
