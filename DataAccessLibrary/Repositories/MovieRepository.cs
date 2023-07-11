@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DataAccessLibrary.DataAccess;
@@ -98,6 +99,23 @@ namespace DataAccessLibrary.Repositories
 			);
 
 			return requestedMovie;
+        }
+
+		public async Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending)
+		{
+            switch (sortBy)
+            {
+                case "title":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.MovieName) : moviesQuery.OrderByDescending(m => m.MovieName);
+                case "duration":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.Duration) : moviesQuery.OrderByDescending(m => m.Duration);
+                case "releaseDate":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.ReleaseDate) : moviesQuery.OrderByDescending(m => m.ReleaseDate);
+                case "rating":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.Rating) : moviesQuery.OrderByDescending(m => m.Rating);
+                default:
+                    return moviesQuery.OrderBy(m => m.id);
+            }
         }
     }
 }

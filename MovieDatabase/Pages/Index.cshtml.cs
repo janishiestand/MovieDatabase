@@ -41,29 +41,11 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync(string sortBy, bool isAscending, CancellationToken cancellationToken)
     {
-        // Movies = await _db.GetAllMoviesAsync(cancellationToken);
         SortBy = sortBy;
         IsAscending = isAscending;
         IQueryable<Movie> moviesQuery = await _db.QueryAllMoviesAsync(cancellationToken);
 
-        switch (SortBy)
-        {
-            case "title":
-                moviesQuery = (IsAscending) ? moviesQuery.OrderBy(m => m.MovieName) : moviesQuery.OrderByDescending(m => m.MovieName);
-                break;
-            case "duration":
-                moviesQuery = (IsAscending) ? moviesQuery.OrderBy(m => m.Duration) : moviesQuery.OrderByDescending(m => m.Duration);
-                break;
-            case "releaseDate":
-                moviesQuery = (IsAscending) ? moviesQuery.OrderBy(m => m.ReleaseDate) : moviesQuery.OrderByDescending(m => m.ReleaseDate);
-                break;
-            case "rating":
-                moviesQuery = (IsAscending) ? moviesQuery.OrderBy(m => m.Rating) : moviesQuery.OrderByDescending(m => m.Rating);
-                break;
-            default:
-                moviesQuery = moviesQuery.OrderBy(m => m.id);
-                break;
-        }
+        moviesQuery = await _db.ApplySorting(moviesQuery, SortBy, IsAscending);
 
         Movies = await moviesQuery.ToListAsync(cancellationToken);
     }
@@ -97,5 +79,7 @@ public class IndexModel : PageModel
         await _db.SaveChangesAsync(cancellationToken);
         return RedirectToAction(nameof(IndexModel));
     }
+
+    
 }
 
