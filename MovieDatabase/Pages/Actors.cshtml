@@ -13,9 +13,6 @@
             <th>
                 Last Name
             </th>
-            <th>
-                Birthday
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,9 +32,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ActorLastName)
-                </td>
-                <td>
-                    @Convert.ToDateTime(item.Birthday).ToString("dd/MM/yyyy")
                 </td>
                 <td>
                     <form asp-page="ActorUpdate" asp-page-handler="update" asp-route-id="@item.ActorId" method="post">

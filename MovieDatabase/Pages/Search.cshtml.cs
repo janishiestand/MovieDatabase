@@ -67,7 +67,7 @@ namespace MovieDatabase.Pages
                     if (await _db.ContainsMovie(m)) { return await MovieAlreadyInDatabase(cancellationToken); }
                     await _db.AddAsync(m, cancellationToken);
                     await _db.SaveChangesAsync(cancellationToken);
-                    Movies = await _db.GetAllMoviesAsync(cancellationToken);
+                    Movies = await _db.GetAllMoviesAsync();
                     return RedirectToPage("./Index");
                 }
                 return Page();
