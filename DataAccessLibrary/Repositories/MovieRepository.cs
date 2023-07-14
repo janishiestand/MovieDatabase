@@ -68,37 +68,59 @@ namespace DataAccessLibrary.Repositories
 
 		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
 		{
-			string runtimeVal = Regex.Match(movieQuery.Runtime, @"\d+").Value;
-			int rt;
-			if (!int.TryParse(runtimeVal, out rt)) { rt = 0; }
-            DateTime dateTime = DateTime.Parse(movieQuery.Released);
-            Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
-            int ratingVal = imdbRating?.GetOMBdRating() ?? 0;
+			int runtimeVal = ParseDuration(movieQuery.Runtime);
+            DateTime dateTime = ParseReleaseDate(movieQuery.Released);
+            int ratingVal = ParseRating(movieQuery.Ratings);
 
-			List<Actor> QueriedActors = movieQuery.Actors.Split(',').Select(a =>
-			{
-				string[] nameParts = a.Trim().Split(' ');
-				string firstName = nameParts[0];
-				string lastName = (nameParts.Length > 1) ? nameParts[1] : string.Empty;
-
-				return new Actor
-					{
-						ActorFirstName = firstName,
-						ActorLastName = lastName,
-						Birthday = DateTime.MinValue
-					};
-				}).ToList();
+			List<Actor> QueriedActors = CreateActorsFromQuery(movieQuery.Actors);
 
 			Movie requestedMovie = new Movie
 			(
 				MovieName: movieQuery.Title,
-				Duration: rt,
+				Duration: runtimeVal,
 				ReleaseDate: dateTime,
 				Rating: ratingVal,
 				Actors: QueriedActors
 			);
 
 			return requestedMovie;
+        }
+
+		public List<Actor> CreateActorsFromQuery(string queriedActors)
+		{
+            return queriedActors.Split(',').Select(a =>
+            {
+                string[] nameParts = a.Trim().Split(' ');
+                string firstName = nameParts[0];
+                string lastName = (nameParts.Length > 1) ? nameParts[1] : string.Empty;
+
+                return new Actor
+                {
+                    ActorFirstName = firstName,
+                    ActorLastName = lastName,
+                    Birthday = DateTime.MinValue
+                };
+            }).ToList();
+        }
+
+		public int ParseRating(List<Rating> queriedRatings)
+		{
+			Rating rating = queriedRatings.FirstOrDefault(r => r.Source == "Internet Movie Database");
+			return rating?.GetOMBdRating() ?? 0;
+        }
+
+		public DateTime ParseReleaseDate(string released)
+		{
+			return DateTime.Parse(released);
+
+		}
+
+		public int ParseDuration(string queriedRuntime)
+		{
+			string runtimeVal = Regex.Match(queriedRuntime, @"\d+").Value;
+            int duration;
+            if (!int.TryParse(runtimeVal, out duration)) { duration = 0; }
+			return duration;
         }
 
 		public async Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending)
