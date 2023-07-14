@@ -37,6 +37,7 @@
 <div class="add-movie-form">
     <form asp-page="Search" method="post">
         <input type="hidden" asp-for="MovieName" value="@Model.MovieName" />
+        <input type="hidden" asp-for="ReleaseYear" value="@Model.ReleaseYear" />
         <button class="btn btn-primary" type="submit">Add Movie To Library</button>
     </form>
 </div>

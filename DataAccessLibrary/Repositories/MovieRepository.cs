@@ -60,16 +60,16 @@ namespace DataAccessLibrary.Repositories
 			return m;
 		}
 		
-        public async Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string year, CancellationToken cancellationToken)
+        public async Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string? releaseYear, CancellationToken cancellationToken)
         {
-			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle, year, cancellationToken);
+			OMBdSearchResult movieQuery = await _movieApiClient.SearchMovies(movieTitle, releaseYear, cancellationToken);
             return movieQuery;
         }
 
 		public async Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken)
 		{
 			string runtimeVal = Regex.Match(movieQuery.Runtime, @"\d+").Value;
-			int rt;;
+			int rt;
 			if (!int.TryParse(runtimeVal, out rt)) { rt = 0; }
             DateTime dateTime = DateTime.Parse(movieQuery.Released);
             Rating imdbRating = movieQuery.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database");
@@ -117,6 +117,32 @@ namespace DataAccessLibrary.Repositories
                     return moviesQuery.OrderBy(m => m.id);
             }
         }
+
+        public async Task<IQueryable<Movie>> ApplyFilter(IQueryable<Movie> moviesQuery, string selectedFilter, string filterValue)
+		{
+			switch (selectedFilter)
+			{
+				case "title":
+					moviesQuery = moviesQuery.Where(m => m.MovieName.Contains(filterValue));
+					break;
+
+				case "releaseDate":
+					int releaseDate = Int32.Parse(filterValue);
+					moviesQuery = moviesQuery.Where(m => m.ReleaseDate.Year == releaseDate);
+					break;
+
+				case "duration":
+					int duration = int.Parse(filterValue);
+					moviesQuery = moviesQuery.Where(m => m.Duration == duration);
+					break;
+
+				case "rating":
+					int rating = int.Parse(filterValue);
+					moviesQuery = moviesQuery.Where(m => m.Rating == rating);
+					break;
+			}
+			return moviesQuery;
+		}
     }
 }
 

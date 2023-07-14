@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MovieDatabase.Pages;
 
@@ -30,7 +31,11 @@ public class IndexModel : PageModel
     [BindProperty]
     public List<Actor> Actors { get; set; }
 
+    [BindProperty]
+    public string SelectedFilter { get; set;  }
+
     public string SortBy { get; set; }
+
     public bool IsAscending { get; set; }
 
 
@@ -39,11 +44,18 @@ public class IndexModel : PageModel
         _db = db;
     }
 
-    public async Task OnGetAsync(string sortBy, bool isAscending, CancellationToken cancellationToken)
+    public async Task OnGetAsync(string sortBy, bool isAscending, string selectedFilter, string filterValue, CancellationToken cancellationToken)
     {
         SortBy = sortBy;
         IsAscending = isAscending;
+        SelectedFilter = selectedFilter;
+
         IQueryable<Movie> moviesQuery = await _db.QueryAllMoviesAsync(cancellationToken);
+        ViewData["SelectionOptions"] = SelectionOptions();
+        if (!string.IsNullOrEmpty(SelectedFilter) && !string.IsNullOrEmpty(filterValue))
+        {
+            moviesQuery = await _db.ApplyFilter(moviesQuery, selectedFilter, filterValue);
+        }
 
         moviesQuery = await _db.ApplySorting(moviesQuery, SortBy, IsAscending);
 
@@ -80,6 +92,17 @@ public class IndexModel : PageModel
         return RedirectToAction(nameof(IndexModel));
     }
 
-    
+    public List<SelectListItem> SelectionOptions()
+    {
+        List<SelectListItem> selectionOptions = new List<SelectListItem>()
+        {
+            new SelectListItem { Text = "Movie Title", Value = "title" },
+            new SelectListItem { Text = "Release Year", Value = "releaseDate" },
+            new SelectListItem { Text = "Duration", Value = "duration" },
+            new SelectListItem { Text = "Rating", Value = "rating" }
+        };
+        return selectionOptions;
+    }
+
 }
 

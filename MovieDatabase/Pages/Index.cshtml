@@ -30,7 +30,7 @@
         <div style="margin-top: 10px;"></div>
         <form asp-page="Search" asp-page-handler="Search" method="get">
             <input type="text" name="MovieName" placeholder="Movie Title" value="" />
-            <input type="text" name="Year" placeholder="Year" style="width: 60px;" min="1800" max="2099" value="" />
+            <input type="text" name="ReleaseYear" placeholder="Year" style="width: 60px;" min="1800" max="2099" value="" />
             <button class="btn btn-sm btn-success">
                 Search
             </button>
@@ -38,6 +38,19 @@
                 <b>@TempData["ErrorMessage"]</b>
             </div>
         </form>
+        <div style="margin-top: 10px;"></div>
+
+        <form asp-page="Index" asp-page-handler="Filter" method="get">
+            <input type="text" name="FilterValue" placeholder="Filter Value" value="" />
+            <select asp-for="SelectedFilter" asp-items="@(new SelectList(ViewData["SelectionOptions"] as List<SelectListItem>, "Value", "Text"))">
+                <option value="">-- Select Filter --</option>
+            </select>
+            <button class="btn btn-sm btn-success">
+                Filter
+            </button>
+        </form>
+
+
     </div>
     <tbody>
         @foreach (var item in Model.Movies)
@@ -55,7 +68,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)%
-                    
+
                 </td>
                 <td>
                     <form asp-page="Update" asp-page-handler="update" asp-route-id="@item.id" method="post">
@@ -81,3 +94,4 @@
             </tr>
         }
     </tbody>
+</table>

@@ -11,12 +11,13 @@ namespace DataAccessLibrary.Interfaces
 		public Task AddRangeAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken);
 		public Task<List<Actor>> GetActorsByMovieID(int id, CancellationToken cancellationToken);
 		public Task<Movie> FirstOrDefaultAsync(int id, CancellationToken cancellationToken);
-		public Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string year, CancellationToken cancellationToken);
+		public Task<OMBdSearchResult> SearchMovieByTitle(string movieTitle, string releaseYear, CancellationToken cancellationToken);
 		public Task<Movie> ConvertSearchResult(OMBdSearchResult movieQuery, CancellationToken cancellationToken);
 		public new Task<Movie?> FindAsync(int id, CancellationToken cancellationToken);
 		public Task<IQueryable<Movie>> QueryAllMoviesAsync(CancellationToken cancellationToken);
 		public IQueryable<Movie> QueryAllMovies(CancellationToken cancellationToken);
 		public Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending);
+		public Task<IQueryable<Movie>> ApplyFilter(IQueryable<Movie> moviesQuery, string selectedFilter, string filterValue);
     }   
 }
 
