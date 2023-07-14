@@ -143,6 +143,11 @@ namespace DataAccessLibrary.Repositories
 			}
 			return moviesQuery;
 		}
+
+		public async Task<bool> ContainsMovie(Movie Movie)
+		{
+            return await _context.Movies.AnyAsync(m => m.MovieName == Movie.MovieName && m.ReleaseDate == Movie.ReleaseDate);
+        }
     }
 }
 

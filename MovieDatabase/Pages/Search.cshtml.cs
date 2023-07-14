@@ -64,6 +64,7 @@ namespace MovieDatabase.Pages
 
                 if (addToDatabase)
                 {
+                    if (await _db.ContainsMovie(m)) { return await MovieAlreadyInDatabase(cancellationToken); }
                     await _db.AddAsync(m, cancellationToken);
                     await _db.SaveChangesAsync(cancellationToken);
                     Movies = await _db.GetAllMoviesAsync(cancellationToken);
@@ -80,6 +81,12 @@ namespace MovieDatabase.Pages
         private async Task<IActionResult> MovieNotFound(CancellationToken cancellationToken)
         {
             TempData["ErrorMessage"] = "Movie not found.";
+            return RedirectToPage("./Index");
+        }
+
+        private async Task<IActionResult> MovieAlreadyInDatabase(CancellationToken cancellationToken)
+        {
+            TempData["ErrorMessage"] = "This movie has already been added to the library.";
             return RedirectToPage("./Index");
         }
 

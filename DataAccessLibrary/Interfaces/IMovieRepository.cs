@@ -18,6 +18,7 @@ namespace DataAccessLibrary.Interfaces
 		public IQueryable<Movie> QueryAllMovies(CancellationToken cancellationToken);
 		public Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending);
 		public Task<IQueryable<Movie>> ApplyFilter(IQueryable<Movie> moviesQuery, string selectedFilter, string filterValue);
+		public Task<bool> ContainsMovie(Movie Movie);
     }   
 }
 
