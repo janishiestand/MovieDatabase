@@ -123,24 +123,7 @@ namespace DataAccessLibrary.Repositories
 			return duration;
         }
 
-		public async Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending)
-		{
-            switch (sortBy)
-            {
-                case "title":
-                    return (isAscending) ? moviesQuery.OrderBy(m => m.MovieName) : moviesQuery.OrderByDescending(m => m.MovieName);
-                case "duration":
-                    return (isAscending) ? moviesQuery.OrderBy(m => m.Duration) : moviesQuery.OrderByDescending(m => m.Duration);
-                case "releaseDate":
-                    return (isAscending) ? moviesQuery.OrderBy(m => m.ReleaseDate) : moviesQuery.OrderByDescending(m => m.ReleaseDate);
-                case "rating":
-                    return (isAscending) ? moviesQuery.OrderBy(m => m.Rating) : moviesQuery.OrderByDescending(m => m.Rating);
-                default:
-                    return moviesQuery.OrderBy(m => m.id);
-            }
-        }
-
-        public async Task<IQueryable<Movie>> ApplyFilter(IQueryable<Movie> moviesQuery, string selectedFilter, string filterValue)
+        public async Task<IQueryable<Movie>> ApplyFilter(IQueryable<Movie> moviesQuery, string selectedFilter, string filterValue, CancellationToken cancellationToken)
 		{
 			switch (selectedFilter)
 			{
@@ -166,10 +149,29 @@ namespace DataAccessLibrary.Repositories
 			return moviesQuery;
 		}
 
-		public async Task<bool> ContainsMovie(Movie Movie)
+        public async Task<IQueryable<Movie>> ApplySorting(IQueryable<Movie> moviesQuery, string sortBy, bool isAscending)
+        {
+            switch (sortBy)
+            {
+                case "title":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.MovieName) : moviesQuery.OrderByDescending(m => m.MovieName);
+                case "duration":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.Duration) : moviesQuery.OrderByDescending(m => m.Duration);
+                case "releaseDate":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.ReleaseDate) : moviesQuery.OrderByDescending(m => m.ReleaseDate);
+                case "rating":
+                    return (isAscending) ? moviesQuery.OrderBy(m => m.Rating) : moviesQuery.OrderByDescending(m => m.Rating);
+                default:
+                    return moviesQuery.OrderBy(m => m.id);
+            }
+        }
+
+        public async Task<bool> ContainsMovie(Movie Movie)
 		{
             return await _context.Movies.AnyAsync(m => m.MovieName == Movie.MovieName && m.ReleaseDate == Movie.ReleaseDate);
         }
+
+
     }
 }
 

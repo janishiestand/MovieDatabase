@@ -1,5 +1,4 @@
 ﻿using DataAccessLibrary.DataAccess;
-using DataAccessLibrary.Models;
 using DataAccessLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,15 +6,16 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using DataAccessLibrary.Models;
 
 namespace MovieDatabase.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly IMovieRepository _db;
+    private readonly IIndexPageService _db;
     
-    public IList<Movie> Movies { get; set; } = new List<Movie>();
-
+    public IReadOnlyList<IndexPageViewModel> Movies { get; set; }
+    
     [BindProperty, Required]
     public string MovieName { get; set; }
 
@@ -29,7 +29,7 @@ public class IndexModel : PageModel
     public int Rating { get; set; }
 
     [BindProperty]
-    public List<Actor> Actors { get; set; }
+    public IReadOnlyList<IndexActorViewModel> Actors { get; set; }
 
     [BindProperty]
     public string SelectedFilter { get; set;  }
@@ -39,7 +39,7 @@ public class IndexModel : PageModel
     public bool IsAscending { get; set; }
 
 
-    public IndexModel(IMovieRepository db)
+    public IndexModel(IIndexPageService db)
     {
         _db = db;
     }
@@ -49,32 +49,16 @@ public class IndexModel : PageModel
         SortBy = sortBy;
         IsAscending = isAscending;
         SelectedFilter = selectedFilter;
-
-        IQueryable<Movie> moviesQuery = await _db.QueryAllMoviesAsync(cancellationToken);
         ViewData["SelectionOptions"] = SelectionOptions();
-        if (!string.IsNullOrEmpty(SelectedFilter) && !string.IsNullOrEmpty(filterValue))
-        {
-            moviesQuery = await _db.ApplyFilter(moviesQuery, selectedFilter, filterValue);
-        }
-
-        moviesQuery = await _db.ApplySorting(moviesQuery, SortBy, IsAscending);
-
-        Movies = await moviesQuery.ToListAsync(cancellationToken);
+        IReadOnlyList<IndexPageViewModel> moviesQuery = await _db.GetIndexPageViewModelsAsync(SortBy, IsAscending, SelectedFilter, filterValue, cancellationToken);
+        Movies = moviesQuery;
     }
 
     public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
     {
         if (ModelState.IsValid)
         {
-            Movie movie = new(
-                MovieName: MovieName,
-                Duration: Duration,
-                ReleaseDate: ReleaseDate,
-                Rating: Rating,
-                Actors: Actors
-                );
-            await _db.AddAsync(movie, cancellationToken);
-            await _db.SaveChangesAsync(cancellationToken);
+            await _db.AddMovie(MovieName, Duration, ReleaseDate, Rating, Actors.ToList(), cancellationToken);
             return RedirectToPage();
         }
         return Page();
@@ -82,13 +66,7 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnPostDelete(int id, CancellationToken cancellationToken)
     {
-        Movie? toRemove = await _db.FindAsync(id, cancellationToken);
-        if (toRemove == null)
-        {
-            return (NotFound());
-        }
-        _db.Delete(toRemove);
-        await _db.SaveChangesAsync(cancellationToken);
+        await _db.DeleteMovie(id, cancellationToken);
         return RedirectToAction(nameof(IndexModel));
     }
 
