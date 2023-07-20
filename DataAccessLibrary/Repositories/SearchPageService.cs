@@ -17,11 +17,11 @@ namespace DataAccessLibrary.Repositories
 		public async Task<IReadOnlyList<MovieViewModel>> PerformSearchService(string MovieName, string? ReleaseYear, bool addToDatabase, CancellationToken cancellationToken)
 		{
             OMBdSearchResult query = await _movieRepository.SearchMovieByTitle(MovieName, ReleaseYear, cancellationToken);
-            if (query == null)
+            if (query.Response == "False")
             {
                 throw new MovieNotFound();
             }
-            if (query.Response != "False")
+            else
             {
                 Movie m = await _movieRepository.ConvertSearchResult(query, cancellationToken);
 
@@ -40,7 +40,7 @@ namespace DataAccessLibrary.Repositories
                     Movies.Add(m);
                 }
             }
-            IReadOnlyList<MovieViewModel> movies = CreateIndexPageViewModel(Movies);
+            IReadOnlyList<MovieViewModel> movies = CreateSearchPageViewModel(Movies);
             return movies;
         }
 
@@ -54,7 +54,7 @@ namespace DataAccessLibrary.Repositories
             public MovieAlreadyInDatabase() : base("This movie has already been added to the library.") { }
         }
 
-        public IReadOnlyList<MovieViewModel> CreateIndexPageViewModel(IList<Movie> moviesQuery)
+        public IReadOnlyList<MovieViewModel> CreateSearchPageViewModel(IList<Movie> moviesQuery)
         {
             var indexList = new List<MovieViewModel>();
             foreach (var movie in moviesQuery)
