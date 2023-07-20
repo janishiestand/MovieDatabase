@@ -21,6 +21,7 @@ public class Program
         builder.Services.AddTransient<IMovieRepository, MovieRepository>();
         builder.Services.AddTransient<IActorRepository, ActorRepository>();
         builder.Services.AddTransient<IIndexPageService, IndexPageService>();
+        builder.Services.AddTransient<ISearchPageService, SearchPageService>();
         builder.Services.AddHttpClient<IMovieApiClient, MovieApiClient>();
 
         // Add services to the container.

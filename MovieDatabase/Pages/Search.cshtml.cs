@@ -1,16 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using DataAccessLibrary.Interfaces;
-using DataAccessLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using static DataAccessLibrary.Repositories.SearchPageService;
 
 namespace MovieDatabase.Pages
 {
 	public class SearchModel : PageModel
     {
-        private readonly IMovieRepository _db;
+        private readonly ISearchPageService _db;
 
-        public IList<Movie> Movies { get; set; } = new List<Movie>();
+        public IReadOnlyList<MovieViewModel> Movies { get; set; }
 
         [BindProperty(SupportsGet = true), Required]
         public string MovieName { get; set; }
@@ -28,9 +28,9 @@ namespace MovieDatabase.Pages
         public int Rating { get; set; }
 
         [BindProperty]
-        public List<Actor> Actors { get; set; }
+        public IReadOnlyList<ActorViewModel> Actors { get; set; }
 
-        public SearchModel(IMovieRepository db)
+        public SearchModel(ISearchPageService db)
         {
             _db = db;
         }
@@ -47,41 +47,28 @@ namespace MovieDatabase.Pages
 
         private async Task<IActionResult> PerformSearch(CancellationToken cancellationToken, bool addToDatabase)
         {
-            OMBdSearchResult query = await _db.SearchMovieByTitle(MovieName, ReleaseYear, cancellationToken);
-            if (query == null)
+            try
             {
-                return await MovieNotFound(cancellationToken);
-            }
-            if (query.Response != "False")
-            {
-                Movie m = await _db.ConvertSearchResult(query, cancellationToken);
-                Movies.Add(m);
+                Movies = await _db.PerformSearchService(MovieName, ReleaseYear, addToDatabase, cancellationToken);
 
                 if (addToDatabase)
                 {
-                    if (await _db.ContainsMovie(m)) { return await MovieAlreadyInDatabase(cancellationToken); }
-                    await _db.AddAsync(m, cancellationToken);
-                    await _db.SaveChangesAsync(cancellationToken);
-                    Movies = await _db.GetAllMoviesAsync();
                     return RedirectToPage("./Index");
                 }
-                return Page();
+                else
+                {
+                    return Page();
+                }
             }
-            else
+            catch (MovieNotFound)
             {
-                return await MovieNotFound(cancellationToken);  
+                TempData["ErrorMessage"] = "Movie not found.";
             }
-        }
+            catch (MovieAlreadyInDatabase)
+            {
+                TempData["ErrorMessage"] = "This movie has already been added to the library.";
+            }
 
-        private async Task<IActionResult> MovieNotFound(CancellationToken cancellationToken)
-        {
-            TempData["ErrorMessage"] = "Movie not found.";
-            return RedirectToPage("./Index");
-        }
-
-        private async Task<IActionResult> MovieAlreadyInDatabase(CancellationToken cancellationToken)
-        {
-            TempData["ErrorMessage"] = "This movie has already been added to the library.";
             return RedirectToPage("./Index");
         }
 

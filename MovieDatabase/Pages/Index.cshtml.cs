@@ -10,7 +10,7 @@ public class IndexModel : PageModel
 {
     private readonly IIndexPageService _db;
     
-    public IReadOnlyList<IndexPageViewModel> Movies { get; set; }
+    public IReadOnlyList<MovieViewModel> Movies { get; set; }
     
     [BindProperty, Required]
     public string MovieName { get; set; }
@@ -25,7 +25,7 @@ public class IndexModel : PageModel
     public int Rating { get; set; }
 
     [BindProperty]
-    public IReadOnlyList<IndexActorViewModel> Actors { get; set; }
+    public IReadOnlyList<ActorViewModel> Actors { get; set; }
 
     [BindProperty]
     public string SelectedFilter { get; set;  }
@@ -46,7 +46,7 @@ public class IndexModel : PageModel
         IsAscending = isAscending;
         SelectedFilter = selectedFilter;
         ViewData["SelectionOptions"] = SelectionOptions();
-        IReadOnlyList<IndexPageViewModel> moviesQuery = await _db.GetIndexPageViewModelsAsync(SortBy, IsAscending, SelectedFilter, filterValue, cancellationToken);
+        IReadOnlyList<MovieViewModel> moviesQuery = await _db.GetIndexPageViewModelsAsync(SortBy, IsAscending, SelectedFilter, filterValue, cancellationToken);
         Movies = moviesQuery;
     }
 

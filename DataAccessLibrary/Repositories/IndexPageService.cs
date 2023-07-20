@@ -13,10 +13,10 @@ namespace DataAccessLibrary.Repositories
             _movieRepository = movieRepository;
         }
 
-        public async Task<IReadOnlyList<IndexPageViewModel>> GetIndexPageViewModelsAsync(string sortBy, bool isAscending, string SelectedFilter, string filterValue, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<MovieViewModel>> GetIndexPageViewModelsAsync(string sortBy, bool isAscending, string SelectedFilter, string filterValue, CancellationToken cancellationToken)
 		{
 			IQueryable<Movie> moviesQuery = await _movieRepository.QueryAllMoviesAsync(cancellationToken);
-			var indexPageViewModel = new List<IndexPageViewModel>();
+			var indexPageViewModel = new List<MovieViewModel>();
 
             if (!string.IsNullOrEmpty(SelectedFilter) && !string.IsNullOrEmpty(filterValue))
             {
@@ -29,24 +29,24 @@ namespace DataAccessLibrary.Repositories
             return indexPageViewModel;
 		}
 
-        public async Task<IReadOnlyList<IndexPageViewModel>> SortIndexView(string sortBy, bool isAscending, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<MovieViewModel>> SortIndexView(string sortBy, bool isAscending, CancellationToken cancellationToken)
         {
             IQueryable<Movie> moviesQuery = await _movieRepository.QueryAllMoviesAsync(cancellationToken);
-            var indexPageViewModel = new List<IndexPageViewModel>();
+            var indexPageViewModel = new List<MovieViewModel>();
             moviesQuery = await _movieRepository.ApplySorting(moviesQuery, sortBy, isAscending);
             return await CreateIndexPageViewModel(moviesQuery, indexPageViewModel);
         }
 
-        public async Task<List<IndexPageViewModel>> CreateIndexPageViewModel(IQueryable<Movie> moviesQuery, List<IndexPageViewModel> indexList)
+        public async Task<List<MovieViewModel>> CreateIndexPageViewModel(IQueryable<Movie> moviesQuery, List<MovieViewModel> indexList)
         {
             foreach (var movie in moviesQuery)
             {
-                indexList.Add(new IndexPageViewModel(movie.id, movie.MovieName, movie.Duration, movie.ReleaseDate, movie.Rating, movie.Actors));
+                indexList.Add(new MovieViewModel(movie.id, movie.MovieName, movie.Duration, movie.ReleaseDate, movie.Rating, movie.Actors));
             }
             return indexList;
         }
 
-        public async Task AddMovie(string MovieName, int Duration, DateTime ReleaseDate, int Rating, List<IndexActorViewModel> ActorsViewModel, CancellationToken cancellationToken)
+        public async Task AddMovie(string MovieName, int Duration, DateTime ReleaseDate, int Rating, List<ActorViewModel> ActorsViewModel, CancellationToken cancellationToken)
         {
             List<Actor> actors = ActorsViewModel
             .Select(a => new Actor(a.FirstName, a.LastName, a.Birthday))
