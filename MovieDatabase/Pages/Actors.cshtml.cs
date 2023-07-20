@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using DataAccessLibrary.Models;
 using System.ComponentModel.DataAnnotations;
 using DataAccessLibrary.Interfaces;
 
@@ -8,13 +7,13 @@ namespace MovieDatabase.Pages
 {
 	public class ActorsModel : PageModel
     {
-        private readonly IMovieRepository _context;
+        private readonly IActorServicePage _context;
 
-        public IList<Actor> Actors { get; set; } = new List<Actor>();
-
+        public IReadOnlyList<ActorViewModel> Actors { get; set; }
+        /*
         [BindProperty]
         public Movie Movie { get; set; } = default!;
-
+        */
         [BindProperty, Required]
         public string ActorFirstName { get; set; }
 
@@ -25,14 +24,14 @@ namespace MovieDatabase.Pages
         public DateTime Birthday { get; set; }
 
         
-        public ActorsModel(IMovieRepository context)
+        public ActorsModel(IActorServicePage context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> OnGetAsync(int id, CancellationToken cancellationToken)
         {
-            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
+            Actors = await _context.ActorsByMovieID(id, cancellationToken);
             return Page();
         }
 
@@ -42,7 +41,7 @@ namespace MovieDatabase.Pages
             {
                 return NotFound();
             }
-            Actors = await _context.GetActorsByMovieID(id, cancellationToken);
+            Actors = await _context.ActorsByMovieID(id, cancellationToken);
 
             return Page();
         }

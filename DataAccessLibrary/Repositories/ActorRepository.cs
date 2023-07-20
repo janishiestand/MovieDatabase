@@ -14,14 +14,11 @@ namespace DataAccessLibrary.Repositories
 		public ActorRepository(MovieContext context) : base (context)
 		{
 			_context = context;
-
         }
 
 		public async Task<int> GetMovieIdByActorId(int id, CancellationToken cancellationToken)
 		{
-			//Actor a = await _context.Actors.FindAsync(id);
 			return await _context.Actors.Where(a => a.ActorId == id).Select(m => m.Movieid).FirstOrDefaultAsync(cancellationToken);
-			//return a.Movieid;
 		}
 
     }

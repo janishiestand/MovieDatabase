@@ -11,6 +11,6 @@ namespace DataAccessLibrary.Interfaces
     }
 
     public record MovieViewModel(int id, string MovieName, int Duration, DateTime ReleaseDate, int Rating, List<Actor> Actors);
-	public record ActorViewModel(string FirstName, string LastName, DateTime Birthday);
+	public record ActorViewModel(int id, string FirstName, string LastName, DateTime Birthday);
 }
 

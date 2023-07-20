@@ -17,7 +17,7 @@ namespace DataAccessLibrary.Repositories
 		public async Task<IReadOnlyList<MovieViewModel>> PerformSearchService(string MovieName, string? ReleaseYear, bool addToDatabase, CancellationToken cancellationToken)
 		{
             OMBdSearchResult query = await _movieRepository.SearchMovieByTitle(MovieName, ReleaseYear, cancellationToken);
-            if (query.Response == "False")
+            if (query.Response == "False" || query.Title == null)
             {
                 throw new MovieNotFound();
             }
