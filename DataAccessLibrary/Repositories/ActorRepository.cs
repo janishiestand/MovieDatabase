@@ -2,7 +2,6 @@
 using DataAccessLibrary.DataAccess;
 using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.Models;
-using MySqlConnector;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLibrary.Repositories
@@ -20,6 +19,7 @@ namespace DataAccessLibrary.Repositories
 		{
 			return await _context.Actors.Where(a => a.ActorId == id).Select(m => m.Movieid).FirstOrDefaultAsync(cancellationToken);
 		}
+
 
     }
 }

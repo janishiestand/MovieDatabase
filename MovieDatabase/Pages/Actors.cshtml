@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <div>
-        <form asp-page="AddActor" asp-page-handler="AddActor" method="get">
+        <form asp-page="AddActor" asp-page-handler="AddActor" asp-route-id="@Model.MovieId" method="get">
             <button class="btn btn-sm btn-success">
                 Add Actor
             </button>

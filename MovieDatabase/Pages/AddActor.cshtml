@@ -3,18 +3,19 @@
 @{
 }
 
-<form asp-page="Actors" method="post">
+<form asp-page="OnPostAsync" method="post">
     <div asp-validation-summary="All"></div>
     <div class="input-group">
         <div class="form-group mb-2">
-            <input class="form-control" asp-for="ActorFirstName" placeholder="First Name">
-            <span asp-validation-for="ActorFirstName" class="invalid-feedback"></span>
+            <input type="hidden" asp-for="@Model.MovieId" />
+            <input class="form-control" asp-for="Actor.FirstName" placeholder="First Name">
+            <span asp-validation-for="Actor.FirstName" class="invalid-feedback"></span>
             <label></label>
-            <input class="form-control" asp-for="ActorLastName" placeholder="Last Name">
-            <span asp-validation-for="ActorLastName" class="invalid-feedback"></span>
+            <input class="form-control" asp-for="Actor.LastName" placeholder="Last Name">
+            <span asp-validation-for="Actor.LastName" class="invalid-feedback"></span>
             <label></label>
-            <input class="form-control" asp-for="Birthday" placeholder="Birthday">
-            <span asp-validation-for="Birthday" class="invalid-feedback"></span>
+            <input class="form-control" asp-for="Actor.Birthday" placeholder="Birthday">
+            <span asp-validation-for="Actor.Birthday" class="invalid-feedback"></span>
             <label></label>
         </div>
     </div>
@@ -22,5 +23,5 @@
 </form>
 <label></label>
 <div>
-    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="">Back to Actors</a>
+    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="@Model.MovieId">Back to Actors</a>
 </div>

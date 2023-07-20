@@ -57,6 +57,12 @@ namespace DataAccessLibrary.Repositories
             return new ActorViewModel(actor.ActorId, actor.ActorFirstName, actor.ActorLastName, actor.Birthday, actor.Movieid);
         }
 
+        public async Task AddActorToMovie(ActorViewModel Actor, int MovieID, CancellationToken cancellationToken)
+        {
+            Actor ActorToAdd = new Actor(Actor.FirstName, Actor.LastName, Actor.Birthday, MovieID);
+            await _actorRepository.AddAsync(ActorToAdd, cancellationToken);
+            await _actorRepository.SaveChangesAsync(cancellationToken);
+        }
 
     }
 }

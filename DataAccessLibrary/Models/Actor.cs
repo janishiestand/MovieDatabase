@@ -18,6 +18,14 @@ namespace DataAccessLibrary.Models
 			this.Birthday = Birthday;
 		}
 
-	}
+        public Actor(string ActorFirstName, string ActorLastName, DateTime Birthday, int MovieID)
+        {
+            this.ActorFirstName = ActorFirstName;
+            this.ActorLastName = ActorLastName;
+            this.Birthday = Birthday;
+			this.Movieid = MovieID;
+        }
+
+    }
 }
 
