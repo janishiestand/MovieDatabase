@@ -1,12 +1,8 @@
-﻿using DataAccessLibrary.DataAccess;
-using DataAccessLibrary.Interfaces;
+﻿using DataAccessLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using DataAccessLibrary.Models;
 
 namespace MovieDatabase.Pages;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Threading;
-using DataAccessLibrary.Interfaces;
+﻿using DataAccessLibrary.Interfaces;
 using DataAccessLibrary.Models;
 
 
@@ -10,12 +7,10 @@ namespace DataAccessLibrary.Repositories
 	public class IndexPageService : IIndexPageService
 	{
 		private readonly IMovieRepository _movieRepository;
-		private readonly IActorRepository _actorRepository;
 
-        public IndexPageService(IMovieRepository movieRepository, IActorRepository actorRepository)
+        public IndexPageService(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
-            _actorRepository = actorRepository;
         }
 
         public async Task<IReadOnlyList<IndexPageViewModel>> GetIndexPageViewModelsAsync(string sortBy, bool isAscending, string SelectedFilter, string filterValue, CancellationToken cancellationToken)
