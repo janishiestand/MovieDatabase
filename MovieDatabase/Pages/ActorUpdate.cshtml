@@ -4,18 +4,20 @@
     ViewData["Title"] = "Update Actor";
 }
 
-<form asp-page="ActorUpdate" method="post">
+<form asp-page="OnPostAsync" method="post">
     <div asp-validation-summary="ModelOnly"></div>
     <div style="padding-left: 40%;" class="input-group">
         <div class="form-group mb-2">
-            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.ActorFirstName" placeholder="First Name">
-            <span asp-validation-for=ActorUpdate.ActorFirstName class="invalid-feedback"></span>
+            <input type="hidden" asp-for="ActorToUpdate.id" />
+            <input type="hidden" asp-for="ActorToUpdate.movieID" />
+            <input style="text-align:center" class="form-control" asp-for="ActorToUpdate.FirstName" placeholder="First Name">
+            <span asp-validation-for=ActorToUpdate.FirstName class="invalid-feedback"></span>
             <label></label>
-            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.ActorLastName" placeholder="Last Name">
-            <span asp-validation-for="ActorUpdate.ActorLastName" class="invalid-feedback"></span>
+            <input style="text-align:center" class="form-control" asp-for="ActorToUpdate.LastName" placeholder="Last Name">
+            <span asp-validation-for="ActorToUpdate.LastName" class="invalid-feedback"></span>
             <label></label>
-            <input style="text-align:center" class="form-control" asp-for="ActorUpdate.Birthday" placeholder="Birthday">
-            <span asp-validation-for="ActorUpdate.Birthday" class="invalid-feedback"></span>
+            <input style="text-align:center" class="form-control" asp-for="ActorToUpdate.Birthday" placeholder="Birthday">
+            <span asp-validation-for="ActorToUpdate.Birthday" class="invalid-feedback"></span>
             <label></label>
         </div>
     </div>
@@ -23,5 +25,5 @@
 </form>
 <label></label>
 <div>
-    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="@Model.ActorUpdate.Movieid" method="post">Back to List</a>
+    <a style="width: 200px; margin: 0 40%;" asp-page="Actors" asp-route-id="@Model.ActorToUpdate.movieID" method="post">Back to List</a>
 </div>

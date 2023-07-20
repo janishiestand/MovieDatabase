@@ -34,7 +34,7 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    <form asp-page="ActorUpdate" asp-page-handler="update" asp-route-id="@item.id" method="post">
+                    <form asp-page="ActorUpdate" asp-page-handler="update" asp-route-id="@item.id" method="get">
                         <button type="submit" class="btn btn-sm btn-primary">
                             Update
                         </button>

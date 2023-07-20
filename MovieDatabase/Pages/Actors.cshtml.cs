@@ -10,10 +10,7 @@ namespace MovieDatabase.Pages
         private readonly IActorServicePage _context;
 
         public IReadOnlyList<ActorViewModel> Actors { get; set; }
-        /*
-        [BindProperty]
-        public Movie Movie { get; set; } = default!;
-        */
+
         [BindProperty, Required]
         public string ActorFirstName { get; set; }
 

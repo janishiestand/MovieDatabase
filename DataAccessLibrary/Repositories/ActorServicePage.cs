@@ -29,10 +29,35 @@ namespace DataAccessLibrary.Repositories
             var indexList = new List<ActorViewModel>();
             foreach (var actor in actorsQuery)
             {
-                indexList.Add(new ActorViewModel(actor.ActorId, actor.ActorFirstName, actor.ActorLastName, actor.Birthday));
+                indexList.Add(new ActorViewModel(actor.ActorId, actor.ActorFirstName, actor.ActorLastName, actor.Birthday, actor.Movieid));
             }
             return indexList;
         }
+
+		public async Task UpdateActor(ActorViewModel updatedActor,  CancellationToken cancellationToken)
+		{
+            Actor actor = await _actorRepository.FindAsync(updatedActor.id, cancellationToken);
+            if (actor == null) { throw new Exception("Actor not found"); }
+
+            actor.ActorFirstName = updatedActor.FirstName;
+            actor.ActorLastName = updatedActor.LastName;
+            actor.Birthday = updatedActor.Birthday;
+
+            await _actorRepository.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<ActorViewModel> FindActor(int id, CancellationToken cancellationToken)
+        {
+            Actor actor = await _actorRepository.FindAsync(id, cancellationToken);
+            return await ConvertActorToViewModel(actor);
+        }
+
+        public async Task<ActorViewModel> ConvertActorToViewModel(Actor actor)
+        {
+            return new ActorViewModel(actor.ActorId, actor.ActorFirstName, actor.ActorLastName, actor.Birthday, actor.Movieid);
+        }
+
+
     }
 }
 

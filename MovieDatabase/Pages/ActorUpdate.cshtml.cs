@@ -1,48 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using DataAccessLibrary.Interfaces;
-using DataAccessLibrary.Models;
+﻿using DataAccessLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MySqlConnector;
 
 namespace MovieDatabase.Pages
 {
 	public class ActorUpdateModel : PageModel
     {
-        private readonly IActorRepository _context;
+        private readonly IActorServicePage _context;
 
         [BindProperty]
-        public Actor ActorUpdate { get; set; } = default!;
+        public ActorViewModel ActorToUpdate { get; set; }
 
-        public ActorUpdateModel(IActorRepository context)
+        public ActorUpdateModel(IActorServicePage context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int id, CancellationToken cancellationToken)
         {
+            ActorToUpdate = await _context.FindActor(id, cancellationToken);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
-            ActorUpdate = await _context.FindAsync(id, cancellationToken);
-            Actor ActorToUpdate = await _context.FindAsync(id, cancellationToken);
-
-            if (await TryUpdateModelAsync<Actor>(
-                ActorToUpdate, "ActorUpdate",
-                c => c.ActorFirstName, c => c.ActorLastName, c => c.Birthday, c => c.Movieid))
+            if (!ModelState.IsValid)
             {
-                await _context.SaveChangesAsync(cancellationToken);
-                int? movId = await _context.GetMovieIdByActorId(ActorUpdate.ActorId, cancellationToken);
-                return RedirectToPage("./Actors", new { id = movId });
+                return Page();
             }
+            await _context.UpdateActor(ActorToUpdate, cancellationToken);
 
-            return Page();
+            int? movId = ActorToUpdate.movieID;
+            return RedirectToPage("./Actors", new { id = movId });
         }
 
     }
